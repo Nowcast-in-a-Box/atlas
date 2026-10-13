@@ -1,0 +1,17 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration for the forecast output of the Xception Nowcasting Model Product. Upstream inspection (short commit 2b38214c) observed GeoJSON forecast output alongside binary and panel outputs; the declared values are draft assumptions of this project. Null values preserve unknown facts.",
+  "port": "forecast",
+  "variable": "precipitation_rate",
+  "units": "mm h-1",
+  "region": "Latin America",
+  "grid_crs": null,
+  "spatial_resolution": null,
+  "format": {
+    "name": "GeoJSON",
+    "media_type": "application/geo+json"
+  },
+  "format_note": "GeoJSON forecast output was observed upstream; binary and panel outputs also exist and are not yet characterized.",
+  "file_naming": null,
+  "file_naming_note": "Forecast file naming conventions are not yet inspected."
+}

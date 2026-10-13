@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "context_start_time": {
+      "minLength": 1,
+      "pattern": ".*Z$",
+      "title": "Window first context time (UTC)",
+      "type": "string"
+    },
+    "event_id": {
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "title": "SEVIR event ID",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "context_start_time"
+  ],
+  "type": "object"
+}

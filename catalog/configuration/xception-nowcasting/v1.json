@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://configuration/xception-nowcasting/v1",
+  "title": "Xception Nowcasting configuration v1",
+  "description": "v0 exposes no Product parameters for this Model Product; internal model and runtime parameters stay Product-owned and are not invented here. The deterministic configuration is the empty object.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

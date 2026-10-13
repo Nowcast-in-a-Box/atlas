@@ -1,0 +1,18 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration fixing the FSS metric identity for the shared EvaluationResult output contract. Threshold and neighborhood rules stay Product-owned and are not declared here.",
+  "port": "result",
+  "metric_id": "fss",
+  "value_kind": "array",
+  "dimensions": ["threshold", "neighborhood"],
+  "coordinates": ["threshold", "neighborhood"],
+  "units": null,
+  "dimensionless": true,
+  "valid_range": [0.0, 1.0],
+  "direction": "higher_is_better",
+  "aggregation": null,
+  "format": {
+    "name": "JSON",
+    "media_type": "application/json"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://contracts/evaluation-result/v1",
+  "title": "EvaluationResult Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_type",
+    "metric_id",
+    "value_kind",
+    "dimensions",
+    "coordinates",
+    "units",
+    "dimensionless",
+    "valid_range",
+    "direction",
+    "aggregation",
+    "format"
+  ],
+  "properties": {
+    "contract_type": { "const": "evaluation_result" },
+    "metric_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9._-]*$",
+      "maxLength": 128
+    },
+    "value_kind": { "enum": ["scalar", "array"] },
+    "dimensions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "coordinates": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "units": { "type": ["string", "null"], "minLength": 1 },
+    "dimensionless": { "type": "boolean" },
+    "valid_range": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "array",
+          "prefixItems": [{ "type": "number" }, { "type": "number" }],
+          "minItems": 2,
+          "maxItems": 2
+        }
+      ]
+    },
+    "direction": { "enum": ["lower_is_better", "higher_is_better"] },
+    "aggregation": { "type": "string", "minLength": 1 },
+    "format": { "$ref": "#/$defs/format" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "dimensionless": { "const": true } } },
+      "then": { "properties": { "units": { "type": "null" } } },
+      "else": { "properties": { "units": { "type": "string", "minLength": 1 } } }
+    }
+  ],
+  "$defs": {
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "media_type"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "media_type": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

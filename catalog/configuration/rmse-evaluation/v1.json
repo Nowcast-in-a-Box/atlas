@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://configuration/rmse-evaluation/v1",
+  "title": "RMSE Evaluation configuration v1",
+  "description": "v0 exposes no Product parameters for this Evaluation Product; reduction rules stay Product-owned and are not invented here. The deterministic configuration is the empty object.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

@@ -1,0 +1,13 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration fixing the map artifact identity for the shared VisualizationArtifact output contract. Projection, color scale, and layers are Product-owned configuration and are not declared here.",
+  "port": "artifact",
+  "artifact_kind": "map",
+  "formats": [
+    {
+      "name": "PNG",
+      "media_type": "image/png"
+    }
+  ],
+  "time_axis_capability": "none"
+}

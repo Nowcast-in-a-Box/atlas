@@ -1,0 +1,13 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration for the observation output of the GSMaP_NOW Data Product. GSMaP NOW acquisition and regional processing code was observed inside the AINPP Xception upstream repository (short commit 2b38214c); the values below are draft declarations by the Nowcast-in-a-Box project, not upstream verified facts. Null values preserve unknown facts.",
+  "port": "observation",
+  "variable": "precipitation_rate",
+  "units": "mm h-1",
+  "region": null,
+  "grid_crs": null,
+  "spatial_resolution": null,
+  "temporal_resolution": null,
+  "format": null,
+  "format_note": "Output format and file naming for this independent Data Product are not yet established."
+}

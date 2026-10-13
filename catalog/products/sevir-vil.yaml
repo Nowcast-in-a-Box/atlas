@@ -1,0 +1,65 @@
+product_id: sevir-vil
+name: SEVIR VIL
+description: SEVIR VIL. Select an explicit SEVIR event/window. Execution and readiness
+  are supplied by the user's local handler; output stays in its run directory.
+category: data
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: candidate
+documentation: []
+versions:
+- product_id: sevir-vil
+  version_id: v1
+  upstream_version: runtime-integration
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: null
+    purpose: SEVIR VIL
+    input_window: 6 context frames; models consume latest 5
+    forecast_horizon: 20 frames
+    temporal_resolution: 5 minutes
+    spatial_resolution: 3 km native event grid
+    naming_conventions:
+    - nib.run.v1
+    storage_gib: null
+    license_id: null
+    license_evidence_status: unverified
+    resources: {}
+    runtime: {}
+  inputs: []
+  outputs:
+  - name: observations
+    contract_ref:
+      kind: contract
+      ref_id: sevir-observations
+      revision: v1
+      sha256: 55d7b9d0735f4bd1a48181e6b35447d88bd237c8f04b116c22a825879d0a4ff8
+      path: catalog/contracts/sevir-observations/v1.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: sevir-field-pairing
+      revision: v1
+      sha256: 63c1507ca930c81a4ae5413b07883f7c965b528d38e3e15d9fd63a46bace0bdb
+      path: catalog/constraints/sevir-field-pairing/v1.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: sevir-vil-configuration
+    revision: v1
+    sha256: 008643780bec60d0052dd60be8028f860201ba62f881ed9ea065fb57d14f04e5
+    path: catalog/configuration/sevir-vil-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: sevir-vil-usage
+    revision: v1
+    sha256: 04a5cd24d727a025d31c6a0258717d6a044bf79e5aa56638215b22090f37dd98
+    path: catalog/templates/sevir-vil-usage/v1.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Data/model required; diagnostic products optional. Local readiness
+    is checked before execution.
+  artifact_notes: Implementation is under review in the runtime integration; no verified
+    OCI digest is declared.
+  installation_notes: Prepare local Docker images, verified weights and optional offline
+    WMO cache before execution.

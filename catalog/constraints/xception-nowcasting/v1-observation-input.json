@@ -1,0 +1,12 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration for the observation input of the Xception Nowcasting Model Product. Upstream inspection (short commit 2b38214c) confirmed GSMaP NOW acquisition and Latin America regional processing; the declared values are draft assumptions of this project. Null values preserve unknown facts.",
+  "port": "observation",
+  "variable": "precipitation_rate",
+  "units": "mm h-1",
+  "region": "Latin America",
+  "grid_crs": null,
+  "spatial_resolution": null,
+  "accepted_input_formats": null,
+  "accepted_input_formats_note": "Accepted input formats are not yet inspected from upstream."
+}

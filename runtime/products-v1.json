@@ -1,0 +1,44 @@
+{
+  "schema": "nib.runtime-products.v1",
+  "products": [
+    {
+      "product_id": "sevir-vil",
+      "version_id": "v1",
+      "category": "data",
+      "data_id": "sevir"
+    },
+    {
+      "product_id": "nowcastnet-sevir",
+      "version_id": "v1",
+      "category": "model",
+      "data_id": "sevir",
+      "model_id": "nowcastnet"
+    },
+    {
+      "product_id": "exprecast-sevir",
+      "version_id": "v1",
+      "category": "model",
+      "data_id": "sevir",
+      "model_id": "exprecast"
+    },
+    {
+      "product_id": "wadepre-sevir",
+      "version_id": "v1",
+      "category": "model",
+      "data_id": "sevir",
+      "model_id": "wadepre"
+    },
+    {
+      "product_id": "vil-verification",
+      "version_id": "v1",
+      "category": "evaluation",
+      "data_id": "sevir"
+    },
+    {
+      "product_id": "vil-visualization",
+      "version_id": "v1",
+      "category": "visualization",
+      "data_id": "sevir"
+    }
+  ]
+}

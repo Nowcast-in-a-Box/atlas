@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://configuration/gsmap-now-data/v1",
+  "title": "GSMaP_NOW Data configuration v1",
+  "description": "v0 exposes no Product parameters for this Data Product; the deterministic configuration is the empty object.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

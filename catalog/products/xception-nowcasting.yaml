@@ -1,0 +1,103 @@
+product_id: xception-nowcasting
+name: Xception Nowcasting
+description: >-
+  Xception U-Net precipitation nowcasting container for Latin America from
+  the AINPP nowcasting containers project, packaged as the v0 Model Product.
+  Upstream is referenced at an inspected short commit; immutable revision,
+  license, and resource requirements are not yet verified.
+category: model
+provider: AINPP nowcasting containers project (SInApSE-INPE)
+maintainer: Nowcast-in-a-Box project (provisional v0 catalog entry)
+maturity: provisional
+documentation:
+  - label: Upstream repository (AINPP nowcasting containers)
+    url: https://github.com/SInApSE-INPE/ainpp-nowcasting-containers
+versions:
+  - product_id: xception-nowcasting
+    version_id: v1
+    upstream_version: 2b38214c
+    version_evidence_status: declared
+    version_evidence_ref: null
+    delivery_references:
+      - kind: git
+        locator: https://github.com/SInApSE-INPE/ainpp-nowcasting-containers
+        revision: 2b38214c
+        revision_sha256: null
+        digest: null
+        evidence_status: declared
+    metadata:
+      region: Latin America
+      purpose: >-
+        Produce precipitation nowcasting forecasts over Latin America from
+        GSMaP_NOW observations.
+      input_window: null
+      forecast_horizon: null
+      temporal_resolution: null
+      spatial_resolution: null
+      naming_conventions:
+        - >-
+          Not established in this provisional entry; upstream declares GeoJSON
+          forecast output alongside binary and panel outputs (file naming not
+          yet inspected).
+      storage_gib: null
+      license_id: null
+      license_evidence_status: unverified
+      resources: {}
+      runtime: {}
+    inputs:
+      - name: observation
+        requirement: required
+        contract_ref:
+          kind: contract
+          ref_id: observation-field
+          revision: v1
+          sha256: ed67836dca97dce106345294a23f120bb4dbbb005e3b29d5c8fed8fd47bc3345
+          path: catalog/contracts/observation-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: xception-nowcasting-observation-input
+            revision: v1
+            sha256: 14c0f2ca3ec3c670965c3da5f70a0365378733655bd66178c5a31d243192d47c
+            path: catalog/constraints/xception-nowcasting/v1-observation-input.json
+    outputs:
+      - name: forecast
+        contract_ref:
+          kind: contract
+          ref_id: forecast-field
+          revision: v1
+          sha256: e61821101be2a73b3f5c271e20c9ba9733f191d8fb57e41d4654f2d83de1ff5e
+          path: catalog/contracts/forecast-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: xception-nowcasting-forecast-output
+            revision: v1
+            sha256: baddb4d4b76845a3bf8c574c9a9b541e29e6265bd721b310d7bb478bcdb5791b
+            path: catalog/constraints/xception-nowcasting/v1-forecast-output.json
+    configuration_schema_ref:
+      kind: configuration_schema
+      ref_id: xception-nowcasting-configuration
+      revision: v1
+      sha256: fd657c52c5c337093171aed1b40c530dc9834e0cd8fbebaaa74ddf43b2a5bb8f
+      path: catalog/configuration/xception-nowcasting/v1.json
+    template_refs:
+      - kind: template
+        ref_id: xception-nowcasting-usage
+        revision: v1
+        sha256: 8f1e960a689bb0050098e523c64d7f75f472a4851b12ae9d1b13dc28dfc7f4b9
+        path: catalog/templates/xception-nowcasting/v1/usage.md
+    dependencies: []
+    conflicts: []
+    configuration_notes: >-
+      The v0 configuration schema exposes no Product parameters; internal
+      model and runtime parameters stay Product-owned and are not invented
+      here.
+    artifact_notes: >-
+      Upstream git repository inspected at short commit 2b38214c (Dockerfile,
+      Compose, crontab, model definition, checkpoint, data acquisition,
+      inference, and output paths). The short commit is declared evidence;
+      the full immutable revision SHA is not resolved, and no image digest,
+      release tag, or reproducible build source is verified.
+    installation_notes: >-
+      Upstream Compose depends on a config.env file and FTP access that were
+      not portable in inspection; the required environment variable names are
+      not yet inspected, and the Hub does not collect credentials or secrets.

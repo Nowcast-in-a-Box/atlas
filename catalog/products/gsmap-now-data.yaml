@@ -1,0 +1,78 @@
+product_id: gsmap-now-data
+name: GSMaP_NOW Data
+description: >-
+  Acquisition and regional provisioning of the JAXA GSMaP_NOW near-real-time
+  precipitation product as an independent Data Product for Nowcast-in-a-Box.
+  Access method, license, and output format are not yet verified.
+category: data
+provider: Nowcast-in-a-Box project (draft declaration)
+maintainer: Nowcast-in-a-Box project (provisional v0 catalog entry)
+maturity: provisional
+documentation: []
+versions:
+  - product_id: gsmap-now-data
+    version_id: v1
+    upstream_version: null
+    version_evidence_status: unverified
+    version_evidence_ref: null
+    delivery_references: []
+    metadata:
+      region: null
+      purpose: >-
+        Provide GSMaP_NOW near-real-time precipitation observations as the
+        Data input of the NiB v0 provisioning flow.
+      input_window: null
+      forecast_horizon: null
+      temporal_resolution: null
+      spatial_resolution: null
+      naming_conventions:
+        - >-
+          Not established in this provisional entry; GSMaP NOW acquisition and
+          regional processing were observed inside the AINPP Xception upstream
+          repository, but output naming is not yet inspected.
+      storage_gib: null
+      license_id: null
+      license_evidence_status: unverified
+      resources: {}
+      runtime: {}
+    inputs: []
+    outputs:
+      - name: observation
+        contract_ref:
+          kind: contract
+          ref_id: observation-field
+          revision: v1
+          sha256: ed67836dca97dce106345294a23f120bb4dbbb005e3b29d5c8fed8fd47bc3345
+          path: catalog/contracts/observation-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: gsmap-now-data-observation-output
+            revision: v1
+            sha256: 3ccca35e3d705281d2f386e61530dc014e7b9e0fb49277c9f2ee8d3b37c29b85
+            path: catalog/constraints/gsmap-now-data/v1-observation-output.json
+    configuration_schema_ref:
+      kind: configuration_schema
+      ref_id: gsmap-now-data-configuration
+      revision: v1
+      sha256: 4446028396351ddc0f319accf4768fc2a56fb1e835012e72f87c3e62a1a0494f
+      path: catalog/configuration/gsmap-now-data/v1.json
+    template_refs:
+      - kind: template
+        ref_id: gsmap-now-data-usage
+        revision: v1
+        sha256: a5612ba57bc5b2d383201db2218378ef95506fa3e3c216931b1cb6d63b6ece68
+        path: catalog/templates/gsmap-now-data/v1/usage.md
+    dependencies: []
+    conflicts: []
+    configuration_notes: >-
+      The v0 configuration schema exposes no Product parameters; the
+      deterministic configuration is the empty object.
+    artifact_notes: >-
+      No independent artifact or delivery reference is established. GSMaP NOW
+      acquisition and regional processing code was observed inside the AINPP
+      Xception upstream repository (short commit 2b38214c); access method and
+      distribution terms are unverified.
+    installation_notes: >-
+      Not established in this provisional entry; data access requires
+      credentials and terms that are not yet verified, and the Hub does not
+      collect them.
