@@ -1,0 +1,102 @@
+product_id: spatial-field-map-2d
+name: 2D Spatial Field Map
+description: >-
+  Rendering of a forecast field as a static two-dimensional spatial map,
+  declared as an independent Visualization Product for the NiB v0 flow.
+  Internal draft declaration: no implementation artifact or upstream evidence
+  is established yet.
+category: visualization
+provider: Nowcast-in-a-Box project (internal draft declaration)
+maintainer: Nowcast-in-a-Box project (provisional v0 catalog entry)
+maturity: provisional
+documentation: []
+versions:
+  - product_id: spatial-field-map-2d
+    version_id: v1
+    upstream_version: null
+    version_evidence_status: unverified
+    version_evidence_ref: null
+    delivery_references: []
+    metadata:
+      region: null
+      purpose: >-
+        Render a forecast field as a static two-dimensional spatial map,
+        optionally overlaid with a reference observation field.
+      input_window: null
+      forecast_horizon: null
+      temporal_resolution: null
+      spatial_resolution: null
+      naming_conventions:
+        - Not established in this internal draft declaration.
+      storage_gib: null
+      license_id: null
+      license_evidence_status: unverified
+      resources: {}
+      runtime: {}
+    inputs:
+      - name: forecast
+        requirement: required
+        contract_ref:
+          kind: contract
+          ref_id: forecast-field
+          revision: v1
+          sha256: e61821101be2a73b3f5c271e20c9ba9733f191d8fb57e41d4654f2d83de1ff5e
+          path: catalog/contracts/forecast-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: spatial-field-map-2d-field-inputs
+            revision: v1
+            sha256: 1a4c9f251f7a8c41aa3fee6b4871c4b7e224f2dd2a1527f79c36106273e00e5f
+            path: catalog/constraints/spatial-field-map-2d/v1-field-inputs.json
+      - name: reference_observation
+        requirement: optional
+        contract_ref:
+          kind: contract
+          ref_id: observation-field
+          revision: v1
+          sha256: ed67836dca97dce106345294a23f120bb4dbbb005e3b29d5c8fed8fd47bc3345
+          path: catalog/contracts/observation-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: spatial-field-map-2d-field-inputs
+            revision: v1
+            sha256: 1a4c9f251f7a8c41aa3fee6b4871c4b7e224f2dd2a1527f79c36106273e00e5f
+            path: catalog/constraints/spatial-field-map-2d/v1-field-inputs.json
+    outputs:
+      - name: artifact
+        contract_ref:
+          kind: contract
+          ref_id: visualization-artifact
+          revision: v1
+          sha256: 7d920343cd593a31e521f32b29f832e79d6ae6fe39f3c5e317424bfcf7c0a21c
+          path: catalog/contracts/visualization-artifact/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: spatial-field-map-2d-artifact-output
+            revision: v1
+            sha256: 6b85bdb662379fc6d6ac054918a9667dde6c522401fa1ab150c1d376a44ab975
+            path: catalog/constraints/spatial-field-map-2d/v1-artifact-output.json
+    configuration_schema_ref:
+      kind: configuration_schema
+      ref_id: spatial-field-map-2d-configuration
+      revision: v1
+      sha256: f816a56214fd4825635f990646df803ebdaf601ea0dc5c7d019016b440900d89
+      path: catalog/configuration/spatial-field-map-2d/v1.json
+    template_refs:
+      - kind: template
+        ref_id: spatial-field-map-2d-usage
+        revision: v1
+        sha256: 7bd7f286dc469ef3b6288801fc41b0ae0d71709f9e7cc028e9e850bca395b2ad
+        path: catalog/templates/spatial-field-map-2d/v1/usage.md
+    dependencies: []
+    conflicts: []
+    configuration_notes: >-
+      The v0 configuration schema exposes no Product parameters; projection,
+      color scale, and layers stay Product-owned and are not invented here.
+    artifact_notes: >-
+      No rendering implementation source or delivery reference is established;
+      this Product identity is an internal draft declaration and does not
+      borrow any demo library name.
+    installation_notes: >-
+      Not established in this provisional entry; no external Contract
+      Conformance Evidence has been obtained.

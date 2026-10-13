@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://contracts/forecast-field/v1",
+  "title": "ForecastField Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_type",
+    "variable",
+    "units",
+    "dimensions",
+    "coordinates",
+    "time_semantics",
+    "grid",
+    "missing_value",
+    "format"
+  ],
+  "properties": {
+    "contract_type": { "const": "forecast_field" },
+    "variable": { "type": ["string", "null"], "minLength": 1 },
+    "units": { "type": ["string", "null"], "minLength": 1 },
+    "dimensions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "coordinates": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "time_semantics": { "$ref": "#/$defs/time_semantics" },
+    "grid": { "$ref": "#/$defs/grid" },
+    "missing_value": { "$ref": "#/$defs/missing_value" },
+    "format": { "$ref": "#/$defs/format" }
+  },
+  "$defs": {
+    "time_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valid_time", "lead_time"],
+      "properties": {
+        "valid_time": { "type": "boolean" },
+        "lead_time": { "type": "boolean" }
+      }
+    },
+    "grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["crs", "spatial_resolution"],
+      "properties": {
+        "crs": { "type": ["string", "null"], "minLength": 1 },
+        "spatial_resolution": { "type": ["string", "null"], "minLength": 1 }
+      }
+    },
+    "missing_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "representation"],
+      "properties": {
+        "allowed": { "type": "boolean" },
+        "representation": { "type": ["string", "null"], "minLength": 1 }
+      }
+    },
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "media_type"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "media_type": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

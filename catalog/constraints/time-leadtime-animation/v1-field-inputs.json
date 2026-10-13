@@ -1,0 +1,19 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration for the field inputs of the Time/Lead-time Animation Product. The forecast input is required; the reference_observation input is optional and, when bound, is subject to the same paired-field matching checks. The Hub performs static declaration checks only.",
+  "ports": ["forecast", "reference_observation"],
+  "reference_observation_requirement": "optional",
+  "variable": "precipitation_rate",
+  "units": "mm h-1",
+  "requires_matching": [
+    "variable",
+    "units",
+    "grid_crs",
+    "spatial_resolution",
+    "temporal_semantics"
+  ],
+  "grid_crs": null,
+  "spatial_resolution": null,
+  "missing_value_policy": null,
+  "missing_value_policy_note": "Missing-value handling for rendering is not yet established."
+}

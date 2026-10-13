@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://configuration/fss-evaluation/v1",
+  "title": "FSS Evaluation configuration v1",
+  "description": "v0 exposes no Product parameters for this Evaluation Product; threshold and neighborhood rules stay Product-owned and are not invented here. The deterministic configuration is the empty object.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

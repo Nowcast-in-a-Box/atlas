@@ -1,0 +1,102 @@
+product_id: fss-evaluation
+name: FSS Evaluation
+description: >-
+  Fractions Skill Score verification of precipitation forecasts against
+  paired reference observations, declared as an independent Evaluation
+  Product for the NiB v0 flow. Internal draft declaration: no implementation
+  artifact or upstream evidence is established yet.
+category: evaluation
+provider: Nowcast-in-a-Box project (internal draft declaration)
+maintainer: Nowcast-in-a-Box project (provisional v0 catalog entry)
+maturity: provisional
+documentation: []
+versions:
+  - product_id: fss-evaluation
+    version_id: v1
+    upstream_version: null
+    version_evidence_status: unverified
+    version_evidence_ref: null
+    delivery_references: []
+    metadata:
+      region: null
+      purpose: >-
+        Verify precipitation forecasts against reference observations by the
+        Fractions Skill Score over threshold and neighborhood axes.
+      input_window: null
+      forecast_horizon: null
+      temporal_resolution: null
+      spatial_resolution: null
+      naming_conventions:
+        - Not established in this internal draft declaration.
+      storage_gib: null
+      license_id: null
+      license_evidence_status: unverified
+      resources: {}
+      runtime: {}
+    inputs:
+      - name: forecast
+        requirement: required
+        contract_ref:
+          kind: contract
+          ref_id: forecast-field
+          revision: v1
+          sha256: e61821101be2a73b3f5c271e20c9ba9733f191d8fb57e41d4654f2d83de1ff5e
+          path: catalog/contracts/forecast-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: fss-evaluation-paired-inputs
+            revision: v1
+            sha256: 823709161e971fa4b87f248cbd338d113615655cfc5203aeeed14e95ed161cb8
+            path: catalog/constraints/fss-evaluation/v1-paired-inputs.json
+      - name: reference
+        requirement: required
+        contract_ref:
+          kind: contract
+          ref_id: observation-field
+          revision: v1
+          sha256: ed67836dca97dce106345294a23f120bb4dbbb005e3b29d5c8fed8fd47bc3345
+          path: catalog/contracts/observation-field/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: fss-evaluation-paired-inputs
+            revision: v1
+            sha256: 823709161e971fa4b87f248cbd338d113615655cfc5203aeeed14e95ed161cb8
+            path: catalog/constraints/fss-evaluation/v1-paired-inputs.json
+    outputs:
+      - name: result
+        contract_ref:
+          kind: contract
+          ref_id: evaluation-result
+          revision: v1
+          sha256: e6eae68b5e8bdb1d3f520fb3fca31dff219e2475b14d723a8b1e56f523ae8152
+          path: catalog/contracts/evaluation-result/v1.json
+        constraint_refs:
+          - kind: constraint
+            ref_id: fss-evaluation-result-output
+            revision: v1
+            sha256: bb5d288cb72ab86b09eba1dee7cd99175a88621bad6061854300b3ef19361dc1
+            path: catalog/constraints/fss-evaluation/v1-result-output.json
+    configuration_schema_ref:
+      kind: configuration_schema
+      ref_id: fss-evaluation-configuration
+      revision: v1
+      sha256: 4e4f6214cc72b85dc87523f6f80c2656fc5be0191413cf670556dbf386239d6b
+      path: catalog/configuration/fss-evaluation/v1.json
+    template_refs:
+      - kind: template
+        ref_id: fss-evaluation-usage
+        revision: v1
+        sha256: ee2f1658aba3032d4104a945cea4dbe0982cddb32bb4a9bb8ec6c8a04f27c887
+        path: catalog/templates/fss-evaluation/v1/usage.md
+    dependencies: []
+    conflicts: []
+    configuration_notes: >-
+      The v0 configuration schema exposes no Product parameters; threshold and
+      neighborhood rules stay Product-owned and are not invented here.
+    artifact_notes: >-
+      No implementation artifact, tool source, or delivery reference is
+      established; this Product identity is an internal draft declaration and
+      does not borrow any demo library name.
+    installation_notes: >-
+      Not established in this provisional entry; no external Contract
+      Conformance Evidence has been obtained.

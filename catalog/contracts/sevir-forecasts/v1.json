@@ -1,0 +1,8 @@
+{
+  "contract_type": "sevir_forecasts",
+  "format": "nib.run.v1 NPZ descriptors",
+  "time_semantics": "init=last context; 20 leads +5..+100 min",
+  "units": "raw",
+  "variable": "vil",
+  "version": 1
+}

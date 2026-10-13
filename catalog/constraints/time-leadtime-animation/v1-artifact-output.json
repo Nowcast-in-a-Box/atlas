@@ -1,0 +1,13 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration fixing the animation artifact identity for the shared VisualizationArtifact output contract. Frame ordering, frame rate, duration, and output size are Product-owned configuration and are not declared here.",
+  "port": "artifact",
+  "artifact_kind": "animation",
+  "formats": [
+    {
+      "name": "MP4",
+      "media_type": "video/mp4"
+    }
+  ],
+  "time_axis_capability": "lead_time"
+}

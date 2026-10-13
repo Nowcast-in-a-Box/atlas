@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nib://configuration/time-leadtime-animation/v1",
+  "title": "Time/Lead-time Animation configuration v1",
+  "description": "v0 exposes no Product parameters for this Visualization Product; frame ordering, rate, duration, and output size stay Product-owned and are not invented here. The deterministic configuration is the empty object.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {}
+}

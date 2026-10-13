@@ -1,0 +1,10 @@
+{
+  "conformance_evidence_status": "unverified",
+  "notes": "Actual event grid and mask are verified by the local runtime; geographic bbox is not a global SEVIR capability.",
+  "requires_matching": [
+    "variable",
+    "units"
+  ],
+  "units": "raw",
+  "variable": "vil"
+}

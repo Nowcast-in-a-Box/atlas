@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "half_windows": {
+      "default": [
+        0,
+        2
+      ],
+      "items": {
+        "maximum": 16,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "levels": {
+      "default": [
+        16,
+        74,
+        133,
+        181,
+        219
+      ],
+      "items": {
+        "maximum": 255,
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "methods": {
+      "default": [
+        "mae",
+        "rmse"
+      ],
+      "items": {
+        "enum": [
+          "mae",
+          "rmse",
+          "me",
+          "ts",
+          "bias",
+          "ets",
+          "far",
+          "pod",
+          "dts",
+          "fss",
+          "corr"
+        ],
+        "type": "string"
+      },
+      "maxItems": 11,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,18 @@
+{
+  "declaration_basis": "draft_declared",
+  "notes": "NiB Hub v0 provisional declaration for the paired inputs of the RMSE Evaluation Product. The Hub performs static declaration checks only; it does not read files, convert units, regrid, or interpolate. Values are draft declarations by the Nowcast-in-a-Box project.",
+  "ports": ["forecast", "reference"],
+  "variable": "precipitation_rate",
+  "units": "mm h-1",
+  "requires_matching": [
+    "variable",
+    "units",
+    "grid_crs",
+    "spatial_resolution",
+    "temporal_semantics"
+  ],
+  "grid_crs": null,
+  "spatial_resolution": null,
+  "temporal_resolution": null,
+  "adapter_policy": "Any required transformation must be provided by an explicit Adapter Product; the Hub performs none."
+}
