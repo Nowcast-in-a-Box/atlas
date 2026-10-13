@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NiB stored SEVIR run v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "atlas_revision",
+    "status",
+    "data",
+    "sample",
+    "observations",
+    "forecasts",
+    "diagnostics"
+  ],
+  "properties": {
+    "schema": {
+      "const": "nib.run.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "atlas_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "ingested",
+        "running",
+        "succeeded",
+        "failed",
+        "partial",
+        "interrupted"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "const": "sevir"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "required": [
+        "sample_id",
+        "event_id",
+        "row",
+        "context_start_time",
+        "init_time"
+      ],
+      "properties": {
+        "sample_id": {
+          "type": "string"
+        },
+        "event_id": {
+          "type": "string"
+        },
+        "row": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "context_start_time": {
+          "type": "string",
+          "pattern": "Z$",
+          "format": "date-time"
+        },
+        "init_time": {
+          "type": "string",
+          "pattern": "Z$",
+          "format": "date-time"
+        }
+      }
+    },
+    "observations": {
+      "type": "object",
+      "required": [
+        "context",
+        "target"
+      ],
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/field"
+        },
+        "target": {
+          "$ref": "#/$defs/field"
+        }
+      }
+    },
+    "forecasts": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]+$"
+      },
+      "additionalProperties": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/field"
+          },
+          {
+            "required": [
+              "init_time",
+              "lead_minutes",
+              "model_id",
+              "model_version",
+              "weight_sha256"
+            ]
+          }
+        ]
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "error": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "field": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "shape",
+        "dtype",
+        "variable",
+        "unit",
+        "times",
+        "grid"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.npz$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "shape": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "dtype": {
+          "const": "float32"
+        },
+        "variable": {
+          "const": "vil"
+        },
+        "unit": {
+          "const": "raw"
+        },
+        "times": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "Z$",
+            "format": "date-time"
+          }
+        },
+        "grid": {
+          "type": "object",
+          "required": [
+            "crs",
+            "axis_units"
+          ],
+          "properties": {
+            "crs": {
+              "type": "string",
+              "minLength": 1
+            },
+            "axis_units": {
+              "enum": [
+                "m",
+                "degrees"
+              ]
+            }
+          }
+        },
+        "init_time": {
+          "type": "string",
+          "pattern": "Z$",
+          "format": "date-time"
+        },
+        "lead_minutes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "model_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "model_version": {
+          "type": "string"
+        },
+        "weight_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}
