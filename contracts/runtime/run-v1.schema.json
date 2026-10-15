@@ -126,6 +126,10 @@
         "type": "object"
       }
     },
+    "model_names": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
     "error": {
       "type": "string"
     }
