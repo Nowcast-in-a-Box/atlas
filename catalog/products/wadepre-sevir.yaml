@@ -1,5 +1,5 @@
 product_id: wadepre-sevir
-name: WADEPre for SEVIR
+name: WADEPre
 description: WADEPre for SEVIR. Select an explicit SEVIR event/window. Execution and
   readiness are supplied by the user's local handler; output stays in its run directory.
 category: model
@@ -10,6 +10,7 @@ documentation: []
 versions:
 - product_id: wadepre-sevir
   version_id: v1
+  runtime_model_id: wadepre
   upstream_version: runtime-integration
   version_evidence_status: declared
   version_evidence_ref: null
