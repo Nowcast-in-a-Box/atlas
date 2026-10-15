@@ -1,5 +1,5 @@
 product_id: nowcastnet-sevir
-name: NowcastNet for SEVIR
+name: NowcastNet
 description: NowcastNet for SEVIR. Select an explicit SEVIR event/window. Execution
   and readiness are supplied by the user's local handler; output stays in its run
   directory.
@@ -11,6 +11,7 @@ documentation: []
 versions:
 - product_id: nowcastnet-sevir
   version_id: v1
+  runtime_model_id: nowcastnet
   upstream_version: runtime-integration
   version_evidence_status: declared
   version_evidence_ref: null

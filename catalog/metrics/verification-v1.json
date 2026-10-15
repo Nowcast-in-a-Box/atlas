@@ -1,0 +1,148 @@
+{
+  "id": "verification-v1",
+  "source": "nib_verify.core.metrics",
+  "families": [
+    {
+      "family": "continuous",
+      "label": "Continuous",
+      "added_by_default": true,
+      "needs_level": false,
+      "needs_window": false,
+      "metrics": [
+        "mae",
+        "me",
+        "rmse"
+      ]
+    },
+    {
+      "family": "yes_or_no",
+      "label": "Yes or no",
+      "added_by_default": true,
+      "needs_level": true,
+      "needs_window": false,
+      "metrics": [
+        "bias",
+        "dts",
+        "ets",
+        "far",
+        "pod",
+        "ts"
+      ]
+    },
+    {
+      "family": "spatial",
+      "label": "Spatial",
+      "added_by_default": true,
+      "needs_level": true,
+      "needs_window": true,
+      "metrics": [
+        "fss"
+      ]
+    },
+    {
+      "family": "moments",
+      "label": "Moments",
+      "added_by_default": false,
+      "needs_level": false,
+      "needs_window": false,
+      "metrics": [
+        "corr"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "method": "bias",
+      "family": "yes_or_no",
+      "label": "Frequency bias",
+      "params": [
+        "level"
+      ]
+    },
+    {
+      "method": "corr",
+      "family": "moments",
+      "label": "Correlation",
+      "params": []
+    },
+    {
+      "method": "dts",
+      "family": "yes_or_no",
+      "label": "Detection threat score",
+      "params": [
+        "level"
+      ]
+    },
+    {
+      "method": "ets",
+      "family": "yes_or_no",
+      "label": "Equitable threat score",
+      "params": [
+        "level"
+      ]
+    },
+    {
+      "method": "far",
+      "family": "yes_or_no",
+      "label": "False alarm ratio",
+      "params": [
+        "level"
+      ]
+    },
+    {
+      "method": "fss",
+      "family": "spatial",
+      "label": "Fractions skill score",
+      "params": [
+        "level",
+        "half_window"
+      ]
+    },
+    {
+      "method": "mae",
+      "family": "continuous",
+      "label": "Mean absolute error",
+      "params": []
+    },
+    {
+      "method": "me",
+      "family": "continuous",
+      "label": "Mean error",
+      "params": []
+    },
+    {
+      "method": "pod",
+      "family": "yes_or_no",
+      "label": "Probability of detection",
+      "params": [
+        "level"
+      ]
+    },
+    {
+      "method": "rmse",
+      "family": "continuous",
+      "label": "Root mean square error",
+      "params": []
+    },
+    {
+      "method": "ts",
+      "family": "yes_or_no",
+      "label": "Threat score (CSI)",
+      "params": [
+        "level"
+      ]
+    }
+  ],
+  "default_methods": [
+    "bias",
+    "dts",
+    "ets",
+    "far",
+    "fss",
+    "mae",
+    "me",
+    "pod",
+    "rmse",
+    "ts"
+  ]
+}
