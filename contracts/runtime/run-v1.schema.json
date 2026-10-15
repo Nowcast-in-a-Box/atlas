@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "NiB stored SEVIR run v1",
+  "title": "NiB stored nowcasting run v1",
   "type": "object",
   "required": [
     "schema",
@@ -43,7 +43,7 @@
       ],
       "properties": {
         "id": {
-          "const": "sevir"
+          "enum": ["sevir", "cma_radar"]
         },
         "version": {
           "type": "string"
@@ -166,10 +166,10 @@
           "const": "float32"
         },
         "variable": {
-          "const": "vil"
+          "enum": ["vil", "CREF"]
         },
         "unit": {
-          "const": "raw"
+          "enum": ["raw", "dBZ"]
         },
         "times": {
           "type": "array",

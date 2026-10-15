@@ -1,0 +1,80 @@
+product_id: cref-visualization
+name: CREF comparison and animation
+description: 'CREF comparison and animation. Cross-domain demo: SEVIR pretrained weights
+  on CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training
+  cadence. Forecast skill is unvalidated.'
+category: visualization
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: candidate
+documentation: []
+versions:
+- product_id: cref-visualization
+  version_id: v1
+  upstream_version: runtime-integration
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: July 2026 CMA national CREF; regional center selected locally
+    purpose: CREF comparison and animation
+    input_window: 6 context frames; models consume latest 5
+    forecast_horizon: 20 frames / 120 minutes
+    temporal_resolution: 6 minutes
+    spatial_resolution: 3000 m regional LAEA, 128x128, 384 km extent
+    naming_conventions:
+    - nib.run.v1
+    storage_gib: null
+    license_id: null
+    license_evidence_status: unverified
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: forecast
+    cardinality: many
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: cma-forecasts
+      revision: v1
+      sha256: f1c2170ce1fecb07e92f36bb54d3462d9aeeac4505406ccf628a57e032f7da16
+      path: catalog/contracts/cma-forecasts/v1.json
+    constraint_refs:
+    - &id001
+      kind: constraint
+      ref_id: cma-field-pairing
+      revision: v1
+      sha256: 4745307bbfd3442cc5a521b86d98d5d105074c8d3612015e9126ed746b32074f
+      path: catalog/constraints/cma-field-pairing/v1.json
+  outputs:
+  - name: artifact
+    contract_ref:
+      kind: contract
+      ref_id: cma-diagnostic-artifacts
+      revision: v1
+      sha256: 7135aabd6c01f3239dbcf3b29352e03e09ecc2da6d379b86e14d270a2a7a8165
+      path: catalog/contracts/cma-diagnostic-artifacts/v1.json
+    constraint_refs:
+    - *id001
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: cref-visualization-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/cref-visualization-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: cref-visualization-usage
+    revision: v1
+    sha256: 98f0105e5d48a7729e37b4de1585d554d40228d1bbffad7d8424dc598e48fa2f
+    path: catalog/templates/cref-visualization-usage/v1.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: 'Cross-domain demo: SEVIR pretrained weights on CREF; linear
+    0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence. Forecast
+    skill is unvalidated.'
+  artifact_notes: Runtime source adapters/cma_radar/nowcastnet; local weight SHA256
+    773b6cbe0b1e0c8cea3b62932dc60b108b60885a54f7445a0074a48d4810b37d. No OCI digest
+    declared.
+  installation_notes: Prepare local Docker images and copy the checked local SEVIR
+    NowcastNet weight; CMA comparison requires no basemap cache.

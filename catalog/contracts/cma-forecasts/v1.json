@@ -1,0 +1,8 @@
+{
+  "contract_type": "cma_forecasts",
+  "format": "nib.run.v1 NPZ descriptors",
+  "time_semantics": "six context and twenty target frames; UTC cadence 6 min",
+  "units": "dBZ",
+  "variable": "CREF",
+  "version": 1
+}

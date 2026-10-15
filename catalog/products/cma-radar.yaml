@@ -1,0 +1,68 @@
+product_id: cma-radar
+name: CMA Radar · July 2026
+description: 'CMA Radar · July 2026. Cross-domain demo: SEVIR pretrained weights on
+  CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence.
+  Forecast skill is unvalidated.'
+category: data
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: candidate
+documentation: []
+versions:
+- product_id: cma-radar
+  version_id: v1
+  upstream_version: runtime-integration
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: July 2026 CMA national CREF; regional center selected locally
+    purpose: CMA Radar · July 2026
+    input_window: 6 context frames; models consume latest 5
+    forecast_horizon: 20 frames / 120 minutes
+    temporal_resolution: 6 minutes
+    spatial_resolution: 3000 m regional LAEA, 128x128, 384 km extent
+    naming_conventions:
+    - nib.run.v1
+    storage_gib: null
+    license_id: null
+    license_evidence_status: unverified
+    resources: {}
+    runtime: {}
+  inputs: []
+  outputs:
+  - name: observations
+    contract_ref:
+      kind: contract
+      ref_id: cma-observations
+      revision: v1
+      sha256: 7ce679d1e2f413a9ce97685eb303405f6f8826514c5f7bd77dec1dc6e7a27a1c
+      path: catalog/contracts/cma-observations/v1.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: cma-field-pairing
+      revision: v1
+      sha256: 4745307bbfd3442cc5a521b86d98d5d105074c8d3612015e9126ed746b32074f
+      path: catalog/constraints/cma-field-pairing/v1.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: cma-radar-configuration
+    revision: v1
+    sha256: 1587994fea2e63b6d09367be22e84e1b2566ba091a34b02bc170b481da9e77ff
+    path: catalog/configuration/cma-radar-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: cma-radar-usage
+    revision: v1
+    sha256: f881fefabf321e8358977f7d086e1704d61a78569da6a9b30028186d56966013
+    path: catalog/templates/cma-radar-usage/v1.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: 'Cross-domain demo: SEVIR pretrained weights on CREF; linear
+    0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence. Forecast
+    skill is unvalidated.'
+  artifact_notes: Runtime source adapters/cma_radar/nowcastnet; local weight SHA256
+    773b6cbe0b1e0c8cea3b62932dc60b108b60885a54f7445a0074a48d4810b37d. No OCI digest
+    declared.
+  installation_notes: Prepare local Docker images and copy the checked local SEVIR
+    NowcastNet weight; CMA comparison requires no basemap cache.
