@@ -1,0 +1,10 @@
+{
+  "conformance_evidence_status": "unverified",
+  "notes": "Cross-domain demo: SEVIR pretrained weights on CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence. Forecast skill is unvalidated.",
+  "requires_matching": [
+    "variable",
+    "units"
+  ],
+  "units": "dBZ",
+  "variable": "CREF"
+}

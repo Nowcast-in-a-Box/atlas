@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "context_start_time": {
+      "minLength": 1,
+      "pattern": "^2026-07-.*Z$",
+      "title": "Window first context time (UTC)",
+      "type": "string",
+      "default": "2026-07-01T00:00:00Z"
+    },
+    "event_id": {
+      "minLength": 1,
+      "pattern": "^202607[0-3][0-9]$",
+      "title": "CMA sample date",
+      "type": "string",
+      "default": "20260701"
+    },
+    "center_lon": {
+      "type": "number",
+      "title": "Region center longitude (degrees east)",
+      "minimum": 76,
+      "maximum": 132,
+      "default": 118
+    },
+    "center_lat": {
+      "type": "number",
+      "title": "Region center latitude (degrees north)",
+      "minimum": 15,
+      "maximum": 51,
+      "default": 32
+    }
+  },
+  "required": [
+    "event_id",
+    "context_start_time",
+    "center_lon",
+    "center_lat"
+  ],
+  "type": "object"
+}
