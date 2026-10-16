@@ -11,10 +11,20 @@ documentation: []
 versions:
 - product_id: cref-verification
   version_id: v1
-  upstream_version: runtime-integration
-  version_evidence_status: declared
-  version_evidence_ref: null
-  delivery_references: []
+  upstream_version: 60b756eaace8b0952b90e17a1d5be5dfd0b11f25
+  version_evidence_status: verified
+  version_evidence_ref:
+    kind: evidence
+    ref_id: cma-runtime-source
+    revision: v1
+    sha256: 6ea04a9b0d85619f40887ea980d862d4daf6d0225305667b4f10d10dda069f96
+    path: catalog/evidence/cma-runtime-source/v1.json
+  delivery_references:
+  - kind: git
+    locator: https://github.com/Nowcast-in-a-Box/Nowcast-in-a-box
+    revision: 60b756eaace8b0952b90e17a1d5be5dfd0b11f25
+    revision_sha256: 1f5f7b83aa81f610de3efbbb8ee55261fec2548023d9d28d51b60333f0caaa61
+    evidence_status: verified
   metadata:
     region: July 2026 CMA national CREF; regional center selected locally
     purpose: CREF verification
@@ -27,7 +37,8 @@ versions:
     storage_gib: null
     license_id: null
     license_evidence_status: unverified
-    resources: {}
+    resources:
+      gpu_count: 0
     runtime: {}
   inputs:
   - name: forecast

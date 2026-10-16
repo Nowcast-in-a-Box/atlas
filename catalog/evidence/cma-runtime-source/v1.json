@@ -1,0 +1,79 @@
+{
+  "kind": "source_revision",
+  "runtime_revision": "60b756eaace8b0952b90e17a1d5be5dfd0b11f25",
+  "repository": "https://github.com/Nowcast-in-a-Box/Nowcast-in-a-box",
+  "scope": "Verified source availability and revision only; no model skill, data license or external contract conformance claim.",
+  "products": {
+    "cma-radar": {
+      "paths": [
+        "ingestion/cma_radar.py",
+        "adapters/cma_radar/source.py"
+      ],
+      "archive_sha256": "e67db40226dc60374e1493e810cf2d124ef47002df9fba098561b155e6720bfc",
+      "reproduce": [
+        "git",
+        "archive",
+        "60b756eaace8b0952b90e17a1d5be5dfd0b11f25",
+        "--",
+        "ingestion/cma_radar.py",
+        "adapters/cma_radar/source.py"
+      ]
+    },
+    "nowcastnet-cma": {
+      "paths": [
+        "adapters/cma_radar/nowcastnet/adapter.py"
+      ],
+      "archive_sha256": "49dd548dec701354a6f6ad0b459d1a7013a42254e245b55a0a8a76b3cb5483ba",
+      "reproduce": [
+        "git",
+        "archive",
+        "60b756eaace8b0952b90e17a1d5be5dfd0b11f25",
+        "--",
+        "adapters/cma_radar/nowcastnet/adapter.py"
+      ]
+    },
+    "cref-verification": {
+      "paths": [
+        "diagnostics/verification_run.py"
+      ],
+      "archive_sha256": "1f5f7b83aa81f610de3efbbb8ee55261fec2548023d9d28d51b60333f0caaa61",
+      "reproduce": [
+        "git",
+        "archive",
+        "60b756eaace8b0952b90e17a1d5be5dfd0b11f25",
+        "--",
+        "diagnostics/verification_run.py"
+      ]
+    },
+    "cref-visualization": {
+      "paths": [
+        "diagnostics/cma_visualization.py"
+      ],
+      "archive_sha256": "102add6935247cad7701b5324cd09cd39ec9b27043adcb16c0c08a2faf663a3e",
+      "reproduce": [
+        "git",
+        "archive",
+        "60b756eaace8b0952b90e17a1d5be5dfd0b11f25",
+        "--",
+        "diagnostics/cma_visualization.py"
+      ]
+    },
+    "time-leadtime-animation": {
+      "paths": [
+        "diagnostics/cma_visualization.py",
+        "diagnostics/visualization_run.py",
+        "handler/package.go"
+      ],
+      "archive_sha256": "7d1757e8b53acce23170530b09ef84d86f45de6ae44486b8e944da2839bf40da",
+      "reproduce": [
+        "git",
+        "archive",
+        "60b756eaace8b0952b90e17a1d5be5dfd0b11f25",
+        "--",
+        "diagnostics/cma_visualization.py",
+        "diagnostics/visualization_run.py",
+        "handler/package.go"
+      ]
+    }
+  }
+}

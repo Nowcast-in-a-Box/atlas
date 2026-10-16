@@ -1,103 +1,109 @@
 product_id: time-leadtime-animation
 name: Time/Lead-time Animation
-description: >-
-  Rendering of forecast fields as an animation along the lead-time axis,
-  declared as an independent Visualization Product for the NiB v0 flow.
-  Internal draft declaration: no implementation artifact or upstream evidence
-  is established yet.
+description: Lead-time animation of stored CMA CREF or SEVIR VIL forecasts, preserving
+  the source variable, unit, spatial grid and forecast cadence. The legacy precipitation
+  contract remains declared; runtime rendering supports CREF and VIL.
 category: visualization
-provider: Nowcast-in-a-Box project (internal draft declaration)
-maintainer: Nowcast-in-a-Box project (provisional v0 catalog entry)
-maturity: provisional
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: candidate
 documentation: []
 versions:
-  - product_id: time-leadtime-animation
-    version_id: v1
-    upstream_version: null
-    version_evidence_status: unverified
-    version_evidence_ref: null
-    delivery_references: []
-    metadata:
-      region: null
-      purpose: >-
-        Render forecast fields as an animation along the lead-time axis,
-        optionally compared with a reference observation field.
-      input_window: null
-      forecast_horizon: null
-      temporal_resolution: null
-      spatial_resolution: null
-      naming_conventions:
-        - Not established in this internal draft declaration.
-      storage_gib: null
-      license_id: null
-      license_evidence_status: unverified
-      resources: {}
-      runtime: {}
-    inputs:
-      - name: forecast
-        requirement: required
-        contract_ref:
-          kind: contract
-          ref_id: forecast-field
-          revision: v1
-          sha256: e61821101be2a73b3f5c271e20c9ba9733f191d8fb57e41d4654f2d83de1ff5e
-          path: catalog/contracts/forecast-field/v1.json
-        constraint_refs:
-          - kind: constraint
-            ref_id: time-leadtime-animation-field-inputs
-            revision: v1
-            sha256: 7e69561be76b22792073b5a9a8ac43c1173c82bd4209c4d7c3b9a91c66a06901
-            path: catalog/constraints/time-leadtime-animation/v1-field-inputs.json
-      - name: reference_observation
-        requirement: optional
-        contract_ref:
-          kind: contract
-          ref_id: observation-field
-          revision: v1
-          sha256: ed67836dca97dce106345294a23f120bb4dbbb005e3b29d5c8fed8fd47bc3345
-          path: catalog/contracts/observation-field/v1.json
-        constraint_refs:
-          - kind: constraint
-            ref_id: time-leadtime-animation-field-inputs
-            revision: v1
-            sha256: 7e69561be76b22792073b5a9a8ac43c1173c82bd4209c4d7c3b9a91c66a06901
-            path: catalog/constraints/time-leadtime-animation/v1-field-inputs.json
-    outputs:
-      - name: artifact
-        contract_ref:
-          kind: contract
-          ref_id: visualization-artifact
-          revision: v1
-          sha256: 7d920343cd593a31e521f32b29f832e79d6ae6fe39f3c5e317424bfcf7c0a21c
-          path: catalog/contracts/visualization-artifact/v1.json
-        constraint_refs:
-          - kind: constraint
-            ref_id: time-leadtime-animation-artifact-output
-            revision: v1
-            sha256: d3822c83185ad238b61332659a41adafadf50ca21773e96a943bbb3aeeb8252a
-            path: catalog/constraints/time-leadtime-animation/v1-artifact-output.json
-    configuration_schema_ref:
-      kind: configuration_schema
-      ref_id: time-leadtime-animation-configuration
+- product_id: time-leadtime-animation
+  version_id: v1
+  upstream_version: 60b756eaace8b0952b90e17a1d5be5dfd0b11f25
+  version_evidence_status: verified
+  version_evidence_ref:
+    kind: evidence
+    ref_id: cma-runtime-source
+    revision: v1
+    sha256: 6ea04a9b0d85619f40887ea980d862d4daf6d0225305667b4f10d10dda069f96
+    path: catalog/evidence/cma-runtime-source/v1.json
+  delivery_references:
+  - kind: git
+    locator: https://github.com/Nowcast-in-a-Box/Nowcast-in-a-box
+    revision: 60b756eaace8b0952b90e17a1d5be5dfd0b11f25
+    revision_sha256: 7d1757e8b53acce23170530b09ef84d86f45de6ae44486b8e944da2839bf40da
+    evidence_status: verified
+  metadata:
+    region: null
+    purpose: Render forecast fields as an animation along the lead-time axis, optionally
+      compared with a reference observation field.
+    input_window: null
+    forecast_horizon: null
+    temporal_resolution: null
+    spatial_resolution: null
+    naming_conventions:
+    - diagnostics/visualization/<attempt>/comparison.gif for CMA CREF
+    - diagnostics/visualization/<attempt>/animation.gif for SEVIR VIL
+    storage_gib: null
+    license_id: null
+    license_evidence_status: unverified
+    resources:
+      gpu_count: 0
+    runtime: {}
+  inputs:
+  - name: forecast
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: forecast-field
       revision: v1
-      sha256: 9a002738073dfd4bd85c1304fa4aaa4ce0ef65737f076af32cf4bd593cbf8a58
-      path: catalog/configuration/time-leadtime-animation/v1.json
-    template_refs:
-      - kind: template
-        ref_id: time-leadtime-animation-usage
-        revision: v1
-        sha256: 6b41b3fe4d46a352533eaf05f590b42afecc3637bcfeb48130750a805f572c04
-        path: catalog/templates/time-leadtime-animation/v1/usage.md
-    dependencies: []
-    conflicts: []
-    configuration_notes: >-
-      The v0 configuration schema exposes no Product parameters; frame
-      ordering, frame rate, duration, and output size stay Product-owned and
-      are not invented here.
-    artifact_notes: >-
-      No rendering implementation source or delivery reference is established;
-      this Product identity is an internal draft declaration and does not
-      borrow any demo library name.
-    installation_notes: >-
-      Not established in this provisional entry; no external Contract
-      Conformance Evidence has been obtained.
+      sha256: e61821101be2a73b3f5c271e20c9ba9733f191d8fb57e41d4654f2d83de1ff5e
+      path: catalog/contracts/forecast-field/v1.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: time-leadtime-animation-field-inputs
+      revision: v2
+      sha256: a69abcbcc07fbca43f160026d6a598857112cdca161bdd492a2245b67f2458dc
+      path: catalog/constraints/time-leadtime-animation/v2-field-inputs.json
+  - name: reference_observation
+    requirement: optional
+    contract_ref:
+      kind: contract
+      ref_id: observation-field
+      revision: v1
+      sha256: ed67836dca97dce106345294a23f120bb4dbbb005e3b29d5c8fed8fd47bc3345
+      path: catalog/contracts/observation-field/v1.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: time-leadtime-animation-field-inputs
+      revision: v2
+      sha256: a69abcbcc07fbca43f160026d6a598857112cdca161bdd492a2245b67f2458dc
+      path: catalog/constraints/time-leadtime-animation/v2-field-inputs.json
+  outputs:
+  - name: artifact
+    contract_ref:
+      kind: contract
+      ref_id: visualization-artifact
+      revision: v1
+      sha256: 7d920343cd593a31e521f32b29f832e79d6ae6fe39f3c5e317424bfcf7c0a21c
+      path: catalog/contracts/visualization-artifact/v1.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: time-leadtime-animation-artifact-output
+      revision: v1
+      sha256: d3822c83185ad238b61332659a41adafadf50ca21773e96a943bbb3aeeb8252a
+      path: catalog/constraints/time-leadtime-animation/v1-artifact-output.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: time-leadtime-animation-configuration
+    revision: v1
+    sha256: 9a002738073dfd4bd85c1304fa4aaa4ce0ef65737f076af32cf4bd593cbf8a58
+    path: catalog/configuration/time-leadtime-animation/v1.json
+  template_refs:
+  - kind: template
+    ref_id: time-leadtime-animation-usage
+    revision: v1
+    sha256: 6b41b3fe4d46a352533eaf05f590b42afecc3637bcfeb48130750a805f572c04
+    path: catalog/templates/time-leadtime-animation/v1/usage.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: The v0 configuration schema exposes no Product parameters;
+    frame ordering, frame rate, duration, and output size stay Product-owned and are
+    not invented here.
+  artifact_notes: Stored-field rendering is implemented in diagnostics/cma_visualization.py
+    and diagnostics/visualization_run.py at the pinned runtime revision. CPU execution
+    requires no GPU; minimum CPU and memory requirements are not benchmarked.
+  installation_notes: Use the handler diagnostics image containing the pinned runtime
+    sources. No external Contract Conformance Evidence has been obtained.

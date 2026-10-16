@@ -1,0 +1,31 @@
+{
+  "declaration_basis": "runtime_declared",
+  "notes": "Lead-time rendering accepts these exact stored forecast/observation contracts. Each source retains its own variable, units, grid and cadence; rendering does not convert between them.",
+  "accepted_contracts": {
+    "forecast": [
+      {
+        "ref_id": "sevir-forecasts",
+        "revision": "v1",
+        "sha256": "513079e9f116f275ce70e9efdc91bb4626286bfcc6d8b43fe9fcc8a4826fb15c"
+      },
+      {
+        "ref_id": "cma-forecasts",
+        "revision": "v1",
+        "sha256": "f1c2170ce1fecb07e92f36bb54d3462d9aeeac4505406ccf628a57e032f7da16"
+      }
+    ],
+    "reference_observation": [
+      {
+        "ref_id": "sevir-observations",
+        "revision": "v1",
+        "sha256": "55d7b9d0735f4bd1a48181e6b35447d88bd237c8f04b116c22a825879d0a4ff8"
+      },
+      {
+        "ref_id": "cma-observations",
+        "revision": "v1",
+        "sha256": "7ce679d1e2f413a9ce97685eb303405f6f8826514c5f7bd77dec1dc6e7a27a1c"
+      }
+    ]
+  },
+  "requires_matching": []
+}
