@@ -45,6 +45,7 @@ versions:
   inputs:
   - name: forecast
     requirement: required
+    cardinality: many
     contract_ref:
       kind: contract
       ref_id: forecast-field
