@@ -1,0 +1,8 @@
+{
+  "contract_type": "registered_run_artifacts",
+  "run_schema": "nib.run.v1",
+  "version": 1,
+  "variable": "CREF",
+  "units": "dBZ",
+  "time_semantics": "six context and twenty target frames; UTC cadence 6 min"
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "half_windows": {
+      "title": "Spatial half-windows",
+      "description": "Neighbourhood radii for spatial metrics. Unused by continuous and yes/no metrics.",
+      "default": [
+        0,
+        2
+      ],
+      "items": {
+        "maximum": 16,
+        "minimum": 0,
+        "type": "integer"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "levels": {
+      "title": "Thresholds",
+      "description": "CREF thresholds in dBZ",
+      "default": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "items": {
+        "maximum": 75,
+        "minimum": 0,
+        "type": "number"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "methods": {
+      "title": "Metrics",
+      "description": "Methods from the atlas verification catalog. The default is every family added by default, excluding correlation.",
+      "default": [
+        "bias",
+        "dts",
+        "ets",
+        "far",
+        "fss",
+        "mae",
+        "me",
+        "pod",
+        "rmse",
+        "ts"
+      ],
+      "items": {
+        "enum": [
+          "mae",
+          "rmse",
+          "me",
+          "ts",
+          "bias",
+          "ets",
+          "far",
+          "pod",
+          "dts",
+          "fss",
+          "corr"
+        ],
+        "type": "string"
+      },
+      "maxItems": 11,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "title": "CREF verification",
+  "type": "object"
+}
