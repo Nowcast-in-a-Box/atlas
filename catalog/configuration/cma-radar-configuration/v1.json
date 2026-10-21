@@ -16,6 +16,18 @@
       "type": "string",
       "default": "20260701"
     },
+    "sample_starts": {
+      "type": "array",
+      "title": "Sample start times (UTC)",
+      "description": "Optional batch of context start times. The first value mirrors context_start_time for backwards compatibility.",
+      "items": {
+        "type": "string",
+        "pattern": "^2026-07-.*Z$"
+      },
+      "minItems": 1,
+      "maxItems": 32,
+      "uniqueItems": true
+    },
     "center_lon": {
       "type": "number",
       "title": "Region center longitude (degrees east)",
