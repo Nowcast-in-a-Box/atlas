@@ -59,7 +59,7 @@ versions:
     kind: configuration_schema
     ref_id: cma-radar-configuration
     revision: v1
-    sha256: 1587994fea2e63b6d09367be22e84e1b2566ba091a34b02bc170b481da9e77ff
+    sha256: 26d7131a4241cc2e24e0c5d83e27203ad5b19524099d965a6ab8eacdbf1c392b
     path: catalog/configuration/cma-radar-configuration/v1.json
   template_refs:
   - kind: template
