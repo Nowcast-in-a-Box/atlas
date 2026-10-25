@@ -35,8 +35,8 @@ versions:
     naming_conventions:
     - nib.run.v1
     storage_gib: null
-    license_id: null
-    license_evidence_status: unverified
+    license_id: MIT
+    license_evidence_status: verified
     resources:
       gpu_count: 0
     runtime: {}
@@ -52,9 +52,9 @@ versions:
     constraint_refs:
     - kind: constraint
       ref_id: cma-field-pairing
-      revision: v1
-      sha256: 4745307bbfd3442cc5a521b86d98d5d105074c8d3612015e9126ed746b32074f
-      path: catalog/constraints/cma-field-pairing/v1.json
+      revision: v2
+      sha256: 9c3f21e04f76f26e18dba788918c1c70a5a0ebd8be8466f886b70c35068aa2e2
+      path: catalog/constraints/cma-field-pairing/v2.json
   configuration_schema_ref:
     kind: configuration_schema
     ref_id: cma-radar-configuration
