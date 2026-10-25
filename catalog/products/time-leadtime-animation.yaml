@@ -37,8 +37,8 @@ versions:
     - diagnostics/visualization/<attempt>/comparison.gif for CMA CREF
     - diagnostics/visualization/<attempt>/animation.gif for SEVIR VIL
     storage_gib: null
-    license_id: null
-    license_evidence_status: unverified
+    license_id: MIT
+    license_evidence_status: verified
     resources:
       gpu_count: 0
     runtime: {}
@@ -83,9 +83,9 @@ versions:
     constraint_refs:
     - kind: constraint
       ref_id: time-leadtime-animation-artifact-output
-      revision: v1
-      sha256: d3822c83185ad238b61332659a41adafadf50ca21773e96a943bbb3aeeb8252a
-      path: catalog/constraints/time-leadtime-animation/v1-artifact-output.json
+      revision: v2
+      sha256: ac304c8836e875978af6638bb980df43a7873d911bbcaf4c9dded3903d1bdcdd
+      path: catalog/constraints/time-leadtime-animation/v2-artifact-output.json
   configuration_schema_ref:
     kind: configuration_schema
     ref_id: time-leadtime-animation-configuration
@@ -107,4 +107,4 @@ versions:
     and diagnostics/visualization_run.py at the pinned runtime revision. CPU execution
     requires no GPU; minimum CPU and memory requirements are not benchmarked.
   installation_notes: Use the handler diagnostics image containing the pinned runtime
-    sources. No external Contract Conformance Evidence has been obtained.
+    sources. Contract conformance is maintainer-approved; source-data and weight licenses remain separate.

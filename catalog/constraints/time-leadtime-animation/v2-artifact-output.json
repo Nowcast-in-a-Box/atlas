@@ -1,0 +1,14 @@
+{
+  "conformance_evidence_status": "verified",
+  "declaration_basis": "maintainer_approved",
+  "notes": "Animation artifact contract conformance approved by the maintainer on 2026-10-25. Frame ordering, frame rate, duration, and output size remain Product-owned configuration. This approval does not establish forecast skill or grant rights to source data or pretrained weights.",
+  "port": "artifact",
+  "artifact_kind": "animation",
+  "formats": [
+    {
+      "name": "MP4",
+      "media_type": "video/mp4"
+    }
+  ],
+  "time_axis_capability": "lead_time"
+}

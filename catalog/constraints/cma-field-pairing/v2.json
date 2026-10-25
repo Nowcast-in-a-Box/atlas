@@ -1,0 +1,11 @@
+{
+  "conformance_evidence_status": "verified",
+  "declaration_basis": "maintainer_approved",
+  "notes": "CMA product contract conformance approved by the maintainer on 2026-10-25. Cross-domain demo: SEVIR pretrained weights on CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence. Forecast skill is unvalidated. This declaration does not grant rights to source data or pretrained weights.",
+  "requires_matching": [
+    "variable",
+    "units"
+  ],
+  "units": "dBZ",
+  "variable": "CREF"
+}
