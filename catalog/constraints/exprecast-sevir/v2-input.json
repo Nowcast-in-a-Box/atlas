@@ -1,0 +1,32 @@
+{
+  "conformance_evidence_status": "unverified",
+  "data_id": "sevir",
+  "model_id": "exprecast",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "variable_id": "vil",
+  "units": "raw",
+  "context_frames": 5,
+  "cadence_minutes": 5,
+  "spatial": [
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "allow_missing": false,
+  "declaration_ref": {
+    "kind": "contract",
+    "ref_id": "exprecast-sevir-model",
+    "revision": "0.1.0",
+    "path": "contracts/models/sevir/exprecast.json",
+    "sha256": "384ed792a981dd00131c6e5765cac0af96a34990607bb1d9159813b058d96928"
+  },
+  "context_selection": "latest"
+}

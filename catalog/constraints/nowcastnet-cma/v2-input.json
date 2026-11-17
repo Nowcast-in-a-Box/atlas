@@ -1,0 +1,32 @@
+{
+  "conformance_evidence_status": "unverified",
+  "data_id": "cma_radar",
+  "model_id": "nowcastnet",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "variable_id": "CREF",
+  "units": "dBZ",
+  "context_frames": 5,
+  "cadence_minutes": 6,
+  "spatial": [
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "allow_missing": false,
+  "declaration_ref": {
+    "kind": "contract",
+    "ref_id": "nowcastnet-cma-model",
+    "revision": "0.1.0",
+    "path": "contracts/models/cma_radar/nowcastnet.json",
+    "sha256": "73eae5d544cfd60d02c3f89dfcdb7bd57bddd6a7399acead07b6e764bc585a3b"
+  },
+  "context_selection": "latest"
+}

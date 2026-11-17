@@ -1,7 +1,6 @@
 product_id: nowcastnet-cma
 name: NowcastNet · CMA demo
-description: 'NowcastNet · CMA demo. Cross-domain demo: SEVIR pretrained weights on
-  CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence.
+description: 'NowcastNet cross-domain demo using SEVIR pretrained weights on CREF.
   Forecast skill is unvalidated.'
 category: model
 provider: Nowcast-in-a-Box
@@ -89,3 +88,82 @@ versions:
     declared.
   installation_notes: Prepare local Docker images and copy the checked local SEVIR
     NowcastNet weight; CMA comparison requires no basemap cache.
+
+- product_id: nowcastnet-cma
+  version_id: v2
+  runtime_model_id: nowcastnet
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: nowcastnet-cma physical-field runtime
+    input_window: latest 5 context frames
+    forecast_horizon: 20 leads through 120 minutes
+    temporal_resolution: 6 minutes observation cadence
+    spatial_resolution: 3000 m regional LAEA, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: observations
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: cma-observations
+      revision: v2
+      sha256: 9a6c95d1b7e09c925fee365cbc2d858c37c7f885fa3126b724f636c6d695fb17
+      path: catalog/contracts/cma-observations/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    -
+      kind: constraint
+      ref_id: nowcastnet-cma-input
+      revision: v2
+      sha256: 02c26d6bd5f8ba24afa728dffdc57c415bd3d6f79ba559bb5f7cefd2ca923b9c
+      path: catalog/constraints/nowcastnet-cma/v2-input.json
+  outputs:
+  - name: forecast
+    contract_ref:
+      kind: contract
+      ref_id: cma-forecasts
+      revision: v2
+      sha256: 701ce20365ca909d8c7d4c9ae03c80d762c5a3d587479b0d006f3f3665fd1bc4
+      path: catalog/contracts/cma-forecasts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    -
+      kind: constraint
+      ref_id: nowcastnet-cma-output
+      revision: v2
+      sha256: 8c42576b919e7ed0edd1333a0ee162063a74684b8b2aa77eea630647c79021fc
+      path: catalog/constraints/nowcastnet-cma/v2-output.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: nowcastnet-cma-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/nowcastnet-cma-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: nowcastnet-cma-usage
+    revision: v2
+    sha256: 7858092dbdfdae3333a00c55e31b4917fe41afb5422cf690715ce0c9f77d0eba
+    path: catalog/templates/nowcastnet-cma-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.
+  notes: Cross-domain SEVIR pretrained weights on CREF; forecast skill is unvalidated.

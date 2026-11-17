@@ -76,3 +76,69 @@ versions:
     OCI digest is declared.
   installation_notes: Prepare local Docker images, verified weights and optional offline
     WMO cache before execution.
+
+- product_id: vil-visualization
+  version_id: v2
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: vil-visualization physical-field runtime
+    input_window: 6 context frames and 20 target frames
+    forecast_horizon: 20 leads through 100 minutes
+    temporal_resolution: 5 minutes observation cadence
+    spatial_resolution: 3 km native SEVIR event grid, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: forecast
+    requirement: required
+    cardinality: many
+    contract_ref:
+      kind: contract
+      ref_id: sevir-forecasts
+      revision: v2
+      sha256: ee0e0881c5d20f54e4361afc02e529b569b0b5ea05297168e5ab13e77b4f8912
+      path: catalog/contracts/sevir-forecasts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  outputs:
+  - name: artifact
+    contract_ref:
+      kind: contract
+      ref_id: sevir-diagnostic-artifacts
+      revision: v2
+      sha256: c9e5b6bfb207bdb5980eb5cd3e22fa672947c11ddb56896c21b6e2dd2d6539f1
+      path: catalog/contracts/sevir-diagnostic-artifacts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: vil-visualization-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/vil-visualization-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: vil-visualization-usage
+    revision: v2
+    sha256: dcdb167f919ccb6f440cd2bceb12279657dfa4898bfa9ba9ee5b9569e1488d94
+    path: catalog/templates/vil-visualization-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.
