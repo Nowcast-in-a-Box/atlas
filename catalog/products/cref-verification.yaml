@@ -106,6 +106,7 @@ versions:
   version_evidence_ref: null
   delivery_references: []
   metadata:
+    region: null
     purpose: cref-verification physical-field runtime
     input_window: 6 context frames and 20 target frames
     forecast_horizon: 20 leads through 120 minutes
@@ -177,6 +178,5 @@ versions:
   dependencies: []
   conflicts: []
   configuration_notes: Local readiness and physical input/output constraints are checked before execution.
-  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published. Cross-domain SEVIR pretrained weights on CREF; forecast skill is unvalidated.
   installation_notes: Prepare local images and digest-checked weights through the handler.
-  notes: Cross-domain SEVIR pretrained weights on CREF; forecast skill is unvalidated.

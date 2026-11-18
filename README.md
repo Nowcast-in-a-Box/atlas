@@ -30,3 +30,10 @@ an older product version to assert a new version.
 
 Job/API contracts and catalog migration follow the runtime slice; a schema alone
 does not establish model inference, diagnostic readiness, or forecast skill.
+
+The Hub exports a selection with one data product, one or more compatible models,
+and optional diagnostics. Consumers resolve exact product versions and configuration
+references in their pinned catalog. The catalog revision identifies the exporting
+catalog content. The Handler supplies local paths, events and execution windows.
+See the [selection contract](contracts/hub/selection-v1.schema.json) and the
+[two-model example](examples/hub-selection-v1.json).
