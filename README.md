@@ -37,3 +37,11 @@ references in their pinned catalog. The catalog revision identifies the exportin
 catalog content. The Handler supplies local paths, events and execution windows.
 See the [selection contract](contracts/hub/selection-v1.schema.json) and the
 [two-model example](examples/hub-selection-v1.json).
+
+## MLCast data sources
+
+The [MLCast source index](runtime/mlcast-sources.json) lists seven upstream Zarr
+sources, with their variables, cadence and example timestamps. The corresponding
+[reader declarations](contracts/data) use the `mlcast_` prefix and are registered
+in the [adapter catalog](runtime/adapters-catalog.json). Reader implementations
+and dataset files stay outside Atlas.
