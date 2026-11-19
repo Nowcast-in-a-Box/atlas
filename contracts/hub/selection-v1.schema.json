@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NiB Hub selection v1",
+  "description": "One data product and one or more compatible model versions, plus optional compatible diagnostics. Resolve each item against the pinned catalog. The receiving Handler supplies local order parameters.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "catalog_revision",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "nib-hub-selection-v1"
+    },
+    "catalog_revision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of the exporting Hub catalog content."
+    },
+    "items": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "product_id",
+          "version_id",
+          "configuration_schema_ref"
+        ],
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "configuration_schema_ref": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "ref_id",
+              "revision",
+              "sha256"
+            ],
+            "properties": {
+              "kind": {
+                "const": "configuration_schema"
+              },
+              "ref_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "path": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

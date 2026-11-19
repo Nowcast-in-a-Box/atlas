@@ -84,6 +84,7 @@ versions:
   version_evidence_ref: null
   delivery_references: []
   metadata:
+    region: null
     purpose: vil-visualization physical-field runtime
     input_window: 6 context frames and 20 target frames
     forecast_horizon: 20 leads through 100 minutes
