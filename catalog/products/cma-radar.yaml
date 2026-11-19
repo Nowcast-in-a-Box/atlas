@@ -1,8 +1,6 @@
 product_id: cma-radar
 name: CMA Radar · July 2026
-description: 'CMA Radar · July 2026. Cross-domain demo: SEVIR pretrained weights on
-  CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training cadence.
-  Forecast skill is unvalidated.'
+description: 'CMA CREF observations with explicit coordinates and six-minute cadence.'
 category: data
 provider: Nowcast-in-a-Box
 maintainer: Nowcast-in-a-Box
@@ -77,3 +75,54 @@ versions:
     declared.
   installation_notes: Prepare local Docker images and copy the checked local SEVIR
     NowcastNet weight; CMA comparison requires no basemap cache.
+
+- product_id: cma-radar
+  version_id: v2
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: cma-radar physical-field runtime
+    input_window: 6 context frames and 20 target frames
+    forecast_horizon: 20 leads through 120 minutes
+    temporal_resolution: 6 minutes observation cadence
+    spatial_resolution: 3000 m regional LAEA, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs: []
+  outputs:
+  - name: observations
+    contract_ref:
+      kind: contract
+      ref_id: cma-observations
+      revision: v2
+      sha256: 9a6c95d1b7e09c925fee365cbc2d858c37c7f885fa3126b724f636c6d695fb17
+      path: catalog/contracts/cma-observations/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: cma-radar-configuration
+    revision: v1
+    sha256: 26d7131a4241cc2e24e0c5d83e27203ad5b19524099d965a6ab8eacdbf1c392b
+    path: catalog/configuration/cma-radar-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: cma-radar-usage
+    revision: v2
+    sha256: b869d208d7bc8f5822c9e7537baed59c324f89ac0c767944b1d32a1093ec0f67
+    path: catalog/templates/cma-radar-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.
+  notes: Cross-domain SEVIR pretrained weights on CREF; forecast skill is unvalidated.

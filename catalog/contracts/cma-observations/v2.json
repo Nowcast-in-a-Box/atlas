@@ -1,0 +1,35 @@
+{
+  "contract_type": "cma_fields",
+  "format": "nib.run.v2 NPZ descriptors",
+  "version": 2,
+  "variable": "CREF",
+  "units": "dBZ",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "dtype": "float32",
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "grid": {
+    "crs": "explicit",
+    "axes": [
+      "y",
+      "x"
+    ],
+    "axis_units": "explicit",
+    "minimum_shape": [
+      2,
+      2
+    ]
+  },
+  "time_semantics": {
+    "context_frames": 6,
+    "target_frames": 20,
+    "cadence_minutes": 6,
+    "init_time": "last context time"
+  }
+}

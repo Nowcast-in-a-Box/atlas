@@ -1,0 +1,11 @@
+{
+  "conformance_evidence_status": "unverified",
+  "run_schema": "nib.run.v2",
+  "dimensions": ["time", "y", "x"],
+  "dtype": "float32",
+  "mask": {"dtype": "bool", "true_means": "missing"},
+  "requires_matching": ["variable", "units", "grid", "valid_time"],
+  "time_matching": "exact",
+  "regrid": false,
+  "notes": "Resolve actual valid times before pairing. Forecast leads need not follow observation cadence. Missing or unmatched times are unavailable; never relabel or interpolate them implicitly. Runtime validates CRS, axes, array shape, masks and checksums."
+}

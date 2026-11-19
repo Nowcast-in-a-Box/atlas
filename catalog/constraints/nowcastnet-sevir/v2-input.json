@@ -1,0 +1,32 @@
+{
+  "conformance_evidence_status": "unverified",
+  "data_id": "sevir",
+  "model_id": "nowcastnet",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "variable_id": "vil",
+  "units": "raw",
+  "context_frames": 5,
+  "cadence_minutes": 5,
+  "spatial": [
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "allow_missing": false,
+  "declaration_ref": {
+    "kind": "contract",
+    "ref_id": "nowcastnet-sevir-model",
+    "revision": "0.1.0",
+    "path": "contracts/models/sevir/nowcastnet.json",
+    "sha256": "baa33b631494eaaaaeddccc371afe49aac1db39cb5fc86b5d5832c39514bc737"
+  },
+  "context_selection": "latest"
+}

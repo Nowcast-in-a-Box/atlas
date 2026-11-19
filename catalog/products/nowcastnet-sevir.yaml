@@ -76,3 +76,81 @@ versions:
     OCI digest is declared.
   installation_notes: Prepare local Docker images, verified weights and optional offline
     WMO cache before execution.
+
+- product_id: nowcastnet-sevir
+  version_id: v2
+  runtime_model_id: nowcastnet
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: nowcastnet-sevir physical-field runtime
+    input_window: latest 5 context frames
+    forecast_horizon: 20 leads through 100 minutes
+    temporal_resolution: 5 minutes observation cadence
+    spatial_resolution: 3 km native SEVIR event grid, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: observations
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: sevir-observations
+      revision: v2
+      sha256: ea9fae8adba6ad3c67a2d5469997e831fb62ade25ee416c7415dfd65fa6129ac
+      path: catalog/contracts/sevir-observations/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    -
+      kind: constraint
+      ref_id: nowcastnet-sevir-input
+      revision: v2
+      sha256: b5cce0aae6c43808b05a231ba600841a36f9337efcc7981af014d6f4541db051
+      path: catalog/constraints/nowcastnet-sevir/v2-input.json
+  outputs:
+  - name: forecast
+    contract_ref:
+      kind: contract
+      ref_id: sevir-forecasts
+      revision: v2
+      sha256: ee0e0881c5d20f54e4361afc02e529b569b0b5ea05297168e5ab13e77b4f8912
+      path: catalog/contracts/sevir-forecasts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    -
+      kind: constraint
+      ref_id: nowcastnet-sevir-output
+      revision: v2
+      sha256: 6326823501f687ee804fa5b3e86ef82dd308b657889611ce14f7bb176dcab416
+      path: catalog/constraints/nowcastnet-sevir/v2-output.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: nowcastnet-sevir-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/nowcastnet-sevir-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: nowcastnet-sevir-usage
+    revision: v2
+    sha256: 2b755b40007ab32cc84442c3199873942a803d15c7cb562073be2ab4d62790bf
+    path: catalog/templates/nowcastnet-sevir-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.

@@ -1,0 +1,52 @@
+{
+  "conformance_evidence_status": "unverified",
+  "data_id": "sevir",
+  "model_id": "wadepre",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "variable_id": "vil",
+  "units": "raw",
+  "lead_minutes": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95,
+    100
+  ],
+  "spatial": [
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "allow_missing": false,
+  "grid": "input",
+  "declaration_ref": {
+    "kind": "contract",
+    "ref_id": "wadepre-sevir-model",
+    "revision": "0.1.0",
+    "path": "contracts/models/sevir/wadepre.json",
+    "sha256": "5049c3379bed5283bc3857aa9adcfd755ed217e5781c3c4dd89697298a72efe3"
+  }
+}

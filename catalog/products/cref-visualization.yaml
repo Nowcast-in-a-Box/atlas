@@ -1,8 +1,7 @@
 product_id: cref-visualization
 name: CREF comparison and animation
-description: 'CREF comparison and animation. Cross-domain demo: SEVIR pretrained weights
-  on CREF; linear 0..75 dBZ to 0..255 mapping, 6 min runtime versus 5 min training
-  cadence. Forecast skill is unvalidated.'
+description: 'CREF comparison and animation using physical fields and explicit coordinates.
+  Forecast skill of the cross-domain demo is unvalidated.'
 category: visualization
 provider: Nowcast-in-a-Box
 maintainer: Nowcast-in-a-Box
@@ -89,3 +88,70 @@ versions:
     declared.
   installation_notes: Prepare local Docker images and copy the checked local SEVIR
     NowcastNet weight; CMA comparison requires no basemap cache.
+
+- product_id: cref-visualization
+  version_id: v2
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: cref-visualization physical-field runtime
+    input_window: 6 context frames and 20 target frames
+    forecast_horizon: 20 leads through 120 minutes
+    temporal_resolution: 6 minutes observation cadence
+    spatial_resolution: 3000 m regional LAEA, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: forecast
+    requirement: required
+    cardinality: many
+    contract_ref:
+      kind: contract
+      ref_id: cma-forecasts
+      revision: v2
+      sha256: 701ce20365ca909d8c7d4c9ae03c80d762c5a3d587479b0d006f3f3665fd1bc4
+      path: catalog/contracts/cma-forecasts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  outputs:
+  - name: artifact
+    contract_ref:
+      kind: contract
+      ref_id: cma-diagnostic-artifacts
+      revision: v2
+      sha256: c9e5b6bfb207bdb5980eb5cd3e22fa672947c11ddb56896c21b6e2dd2d6539f1
+      path: catalog/contracts/cma-diagnostic-artifacts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: cref-visualization-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/cref-visualization-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: cref-visualization-usage
+    revision: v2
+    sha256: 415d78730e6f8f2a8dc4eae2e0ad0e6cc26d0532a45f8fcd386295b9c7b2a4f4
+    path: catalog/templates/cref-visualization-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.
+  notes: Cross-domain SEVIR pretrained weights on CREF; forecast skill is unvalidated.

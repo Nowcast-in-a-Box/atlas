@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NiB stored nowcasting run v2",
+  "description": "Single-variable retrospective runs and aggregate batch manifests. Array and cross-field checks are specified in docs/stored-fields-v2.md.",
+  "type": "object",
+  "required": ["schema", "id", "status", "data", "sample", "observations", "forecasts", "diagnostics"],
+  "properties": {
+    "schema": {"const": "nib.run.v2"},
+    "id": {"$ref": "#/$defs/id"},
+    "atlas_revision": {"$ref": "#/$defs/text"},
+    "status": {"enum": ["ingested", "running", "succeeded", "failed", "partial", "interrupted"]},
+    "data": {
+      "type": "object",
+      "required": ["id", "version", "cadence_minutes"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "version": {"$ref": "#/$defs/text"},
+        "cadence_minutes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "sample": {"$ref": "#/$defs/sample"},
+    "observations": {
+      "type": "object",
+      "required": ["context", "target"],
+      "properties": {
+        "context": {"$ref": "#/$defs/field"},
+        "target": {"$ref": "#/$defs/field"}
+      },
+      "additionalProperties": false
+    },
+    "forecasts": {
+      "type": "object",
+      "propertyNames": {"$ref": "#/$defs/id"},
+      "additionalProperties": {"$ref": "#/$defs/forecast"}
+    },
+    "diagnostics": {"type": "array", "items": {"type": "object"}},
+    "model_names": {"type": "object", "additionalProperties": {"type": "string"}},
+    "error": {"type": "string"},
+    "failure_stage": {"enum": ["declaration", "weights", "input", "prepare", "predict", "output", "store"]},
+    "batch": {"type": "boolean"},
+    "sample_count": {"type": "integer", "minimum": 1},
+    "samples": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "allOf": [
+          {"$ref": "#/$defs/sample"},
+          {
+            "type": "object",
+            "required": ["path"],
+            "properties": {"path": {"type": "string", "pattern": "^samples/[A-Za-z0-9_-]+$"}}
+          }
+        ]
+      }
+    },
+    "failed_samples": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+  },
+  "additionalProperties": false,
+  "if": {"required": ["batch"], "properties": {"batch": {"const": true}}},
+  "then": {"required": ["sample_count", "samples"]},
+  "else": {
+    "required": ["atlas_revision"],
+    "not": {"anyOf": [{"required": ["samples"]}, {"required": ["sample_count"]}, {"required": ["failed_samples"]}]}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "utc": {"type": "string", "pattern": "(Z|\\+00:00)$", "format": "date-time"},
+    "sample": {
+      "type": "object",
+      "required": ["sample_id", "data_id", "cadence_minutes", "context_start_time", "init_time"],
+      "properties": {
+        "sample_id": {"$ref": "#/$defs/text"},
+        "data_id": {"$ref": "#/$defs/text"},
+        "cadence_minutes": {"type": "integer", "minimum": 1},
+        "event_id": {"type": "string"},
+        "row": {"type": "integer", "minimum": 0},
+        "context_start_time": {"$ref": "#/$defs/utc"},
+        "init_time": {"$ref": "#/$defs/utc"},
+        "provenance": {"type": "object"}
+      }
+    },
+    "field": {
+      "type": "object",
+      "description": "NPZ contains values: float32[time,y,x], mask: bool[time,y,x] (true means missing), and finite strictly increasing one-dimensional x/y axes. The descriptor keeps CRS and axis units; axes stay in NPZ.",
+      "required": ["path", "sha256", "shape", "dtype", "variable", "unit", "grid", "times"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?![A-Za-z]:)(?!.*[\\\\\u0000])(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//).+\\.npz$"
+        },
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "shape": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [{"type": "integer", "minimum": 1}, {"type": "integer", "minimum": 2}, {"type": "integer", "minimum": 2}],
+          "items": false
+        },
+        "dtype": {"const": "float32"},
+        "variable": {"$ref": "#/$defs/text"},
+        "unit": {"$ref": "#/$defs/text"},
+        "grid": {
+          "type": "object",
+          "required": ["crs", "axis_units"],
+          "properties": {
+            "crs": {"$ref": "#/$defs/text"},
+            "axis_units": {"$ref": "#/$defs/text"}
+          }
+        },
+        "times": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/utc"}},
+        "init_time": {"$ref": "#/$defs/utc"},
+        "lead_minutes": {
+          "type": "array",
+          "description": "Strictly increasing positive leads, independent of observation cadence. Runtime checks order and times[i] = init_time + lead_minutes[i].",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 1}
+        },
+        "model_id": {"$ref": "#/$defs/id"},
+        "model_version": {"$ref": "#/$defs/text"},
+        "weight_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "forecast": {
+      "allOf": [
+        {"$ref": "#/$defs/field"},
+        {"required": ["init_time", "lead_minutes", "model_id", "model_version", "weight_sha256"]}
+      ]
+    }
+  }
+}

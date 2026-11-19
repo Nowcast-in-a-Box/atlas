@@ -76,3 +76,81 @@ versions:
     OCI digest is declared.
   installation_notes: Prepare local Docker images, verified weights and optional offline
     WMO cache before execution.
+
+- product_id: exprecast-sevir
+  version_id: v2
+  runtime_model_id: exprecast
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: exprecast-sevir physical-field runtime
+    input_window: latest 5 context frames
+    forecast_horizon: 20 leads through 100 minutes
+    temporal_resolution: 5 minutes observation cadence
+    spatial_resolution: 3 km native SEVIR event grid, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: observations
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: sevir-observations
+      revision: v2
+      sha256: ea9fae8adba6ad3c67a2d5469997e831fb62ade25ee416c7415dfd65fa6129ac
+      path: catalog/contracts/sevir-observations/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    -
+      kind: constraint
+      ref_id: exprecast-sevir-input
+      revision: v2
+      sha256: 2d38c27da872e4613585469d664f643593d9e8587a29d655f73d4a992308c165
+      path: catalog/constraints/exprecast-sevir/v2-input.json
+  outputs:
+  - name: forecast
+    contract_ref:
+      kind: contract
+      ref_id: sevir-forecasts
+      revision: v2
+      sha256: ee0e0881c5d20f54e4361afc02e529b569b0b5ea05297168e5ab13e77b4f8912
+      path: catalog/contracts/sevir-forecasts/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    -
+      kind: constraint
+      ref_id: exprecast-sevir-output
+      revision: v2
+      sha256: 6f2828269541833ab69bf04c6743a75642e1b9f973ea9300e47afda6deee080a
+      path: catalog/constraints/exprecast-sevir/v2-output.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: exprecast-sevir-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/exprecast-sevir-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: exprecast-sevir-usage
+    revision: v2
+    sha256: 656c4d16e12ee1ce9c287dfd2fa5140a23af3c11dca519ec83b2162b47df7369
+    path: catalog/templates/exprecast-sevir-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.

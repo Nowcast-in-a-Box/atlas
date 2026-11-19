@@ -63,3 +63,53 @@ versions:
     OCI digest is declared.
   installation_notes: Prepare local Docker images, verified weights and optional offline
     WMO cache before execution.
+
+- product_id: sevir-vil
+  version_id: v2
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    purpose: sevir-vil physical-field runtime
+    input_window: 6 context frames and 20 target frames
+    forecast_horizon: 20 leads through 100 minutes
+    temporal_resolution: 5 minutes observation cadence
+    spatial_resolution: 3 km native SEVIR event grid, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs: []
+  outputs:
+  - name: observations
+    contract_ref:
+      kind: contract
+      ref_id: sevir-observations
+      revision: v2
+      sha256: ea9fae8adba6ad3c67a2d5469997e831fb62ade25ee416c7415dfd65fa6129ac
+      path: catalog/contracts/sevir-observations/v2.json
+    constraint_refs:
+    -
+      kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: sevir-vil-configuration
+    revision: v1
+    sha256: 008643780bec60d0052dd60be8028f860201ba62f881ed9ea065fb57d14f04e5
+    path: catalog/configuration/sevir-vil-configuration/v1.json
+  template_refs:
+  -
+    kind: template
+    ref_id: sevir-vil-usage
+    revision: v2
+    sha256: 49ca82c2f53c0238c652bca09e3e732e9bddb82153fba8ddc9461fbc924b6109
+    path: catalog/templates/sevir-vil-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness and physical input/output constraints are checked before execution.
+  artifact_notes: V2 declaration only; immutable runtime source and OCI delivery are not yet published.
+  installation_notes: Prepare local images and digest-checked weights through the handler.
