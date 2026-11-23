@@ -54,6 +54,13 @@
       "model_id": "nowcastnet"
     },
     {
+      "product_id": "wadepre-cma",
+      "version_id": "v1",
+      "category": "model",
+      "data_id": "cma_radar",
+      "model_id": "wadepre"
+    },
+    {
       "product_id": "cref-verification",
       "version_id": "v1",
       "category": "evaluation",
