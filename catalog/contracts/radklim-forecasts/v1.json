@@ -1,0 +1,47 @@
+{
+  "contract_type": "radklim_forecasts",
+  "format": "nib.run.v2 NPZ descriptors",
+  "version": 1,
+  "variable": "rainfall_amount",
+  "units": "mm",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "dtype": "float32",
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "grid": {
+    "crs": "explicit",
+    "axes": [
+      "y",
+      "x"
+    ],
+    "axis_units": "explicit",
+    "minimum_shape": [
+      2,
+      2
+    ]
+  },
+  "time_semantics": {
+    "init_time": "last context time",
+    "lead_minutes": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60
+    ],
+    "valid_time": "init_time + lead_minutes"
+  }
+}

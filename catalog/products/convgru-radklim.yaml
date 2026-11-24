@@ -1,0 +1,64 @@
+product_id: convgru-radklim
+name: ConvGRU · RADKLIM
+description: 'ConvGRU precipitation nowcasting on DWD RADKLIM 5-minute data. Catalog
+  declaration only; no verified weights or container are published.'
+category: model
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: planned
+documentation: []
+versions:
+- product_id: convgru-radklim
+  version_id: v1
+  runtime_model_id: convgru
+  upstream_version: unpublished
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: Germany
+    purpose: convgru-radklim physical-field runtime
+    input_window: latest 6 context frames
+    forecast_horizon: 12 leads through 60 minutes
+    temporal_resolution: 5 minutes observation cadence
+    spatial_resolution: 1 km German radar composite, cropped
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: observations
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: radklim-observations
+      revision: v1
+      sha256: 56bf83c0e18c4742a517b2922266e3d8a85d2463fa0ba1a434507f1dafd541a6
+      path: catalog/contracts/radklim-observations/v1.json
+    constraint_refs: []
+  outputs:
+  - name: forecast
+    contract_ref:
+      kind: contract
+      ref_id: radklim-forecasts
+      revision: v1
+      sha256: 708667b67d939088642d48243fd5700cc4bc682b0f224ff0af1e01b39b1acbb5
+      path: catalog/contracts/radklim-forecasts/v1.json
+    constraint_refs: []
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: convgru-radklim-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/convgru-radklim-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: convgru-radklim-usage
+    revision: v1
+    sha256: 61d9bf68156e054c69a0ec8998f8ba5edcb287f056b5febcdd22f3c21c7207ec
+    path: catalog/templates/convgru-radklim-usage/v1.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Declaration only; no runtime mapping, weights or container exist.
+  artifact_notes: No verified ConvGRU weights for RADKLIM are published. The IRENE
+    ConvGRU container is an Italy DPC SRI model and is not this model.
+  installation_notes: Not executable from this catalog version.

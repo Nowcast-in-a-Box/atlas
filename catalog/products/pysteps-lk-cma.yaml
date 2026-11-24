@@ -1,0 +1,75 @@
+product_id: pysteps-lk-cma
+name: pySTEPS LK · CMA demo
+description: 'Deterministic pySTEPS Lucas-Kanade extrapolation on CMA CREF. No learned
+  weights; forecast skill is a baseline reference only.'
+category: model
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: candidate
+documentation: []
+versions:
+- product_id: pysteps-lk-cma
+  version_id: v2
+  runtime_model_id: pysteps_lk
+  upstream_version: "1.21.5"
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: null
+    purpose: pysteps-lk-cma physical-field runtime
+    input_window: latest 3 context frames
+    forecast_horizon: 20 leads through 120 minutes
+    temporal_resolution: 6 minutes observation cadence
+    spatial_resolution: 3000 m regional LAEA, 128x128
+    naming_conventions: [nib.run.v2]
+    resources: {}
+    runtime: {}
+  inputs:
+  - name: observations
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: cma-observations
+      revision: v2
+      sha256: 9a6c95d1b7e09c925fee365cbc2d858c37c7f885fa3126b724f636c6d695fb17
+      path: catalog/contracts/cma-observations/v2.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  outputs:
+  - name: forecast
+    contract_ref:
+      kind: contract
+      ref_id: cma-forecasts
+      revision: v2
+      sha256: 701ce20365ca909d8c7d4c9ae03c80d762c5a3d587479b0d006f3f3665fd1bc4
+      path: catalog/contracts/cma-forecasts/v2.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: pysteps-lk-cma-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/pysteps-lk-cma-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: pysteps-lk-cma-usage
+    revision: v1
+    sha256: fc6c1a6c60f5e469f0f1c5b34767f6a606bfcfb186de6f07ddd8c5a3f28c9dc1
+    path: catalog/templates/pysteps-lk-cma-usage/v1.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Local readiness is checked before execution; pySTEPS has no configuration options.
+  artifact_notes: Deterministic optical-flow baseline. The embedded algorithm manifest pins
+    pySTEPS 1.21.5 and its LK parameters; no learned weights are downloaded.
+  installation_notes: Build nib-pysteps-lk:cma-1 locally and select a CMA data root through
+    the handler.

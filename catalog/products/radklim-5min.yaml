@@ -1,0 +1,61 @@
+product_id: radklim-5min
+name: DWD RADKLIM 5 min
+description: 'DWD RADKLIM RW 5-minute radar precipitation composite for Germany,
+  distributed as zarr by MLCast. Catalog declaration only; no local reader runtime
+  is registered.'
+category: data
+provider: DWD / MLCast
+maintainer: Nowcast-in-a-Box
+maturity: provisional
+documentation: []
+versions:
+- product_id: radklim-5min
+  version_id: v1
+  runtime_model_id: null
+  upstream_version: v0.1.1
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: Germany
+    purpose: RADKLIM 5-minute precipitation observations
+    input_window: null
+    forecast_horizon: null
+    temporal_resolution: 5 minutes
+    spatial_resolution: 1 km German radar composite
+    naming_conventions: [nib.run.v2]
+    storage_gib: null
+    license_id: CC-BY-4.0
+    license_evidence_status: declared
+    resources: {}
+    runtime: {}
+  inputs: []
+  outputs:
+  - name: observations
+    contract_ref:
+      kind: contract
+      ref_id: radklim-observations
+      revision: v1
+      sha256: 56bf83c0e18c4742a517b2922266e3d8a85d2463fa0ba1a434507f1dafd541a6
+      path: catalog/contracts/radklim-observations/v1.json
+    constraint_refs: []
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: radklim-5min-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/radklim-5min-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: radklim-5min-usage
+    revision: v1
+    sha256: e39882114f36d4648162cec5669e1f743504a21bc715ff73de37054fb7d1bce1
+    path: catalog/templates/radklim-5min-usage/v1.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: Data stays in the user's local data root; no reader runtime is
+    registered for this product.
+  artifact_notes: Catalog declaration only. The MLCast RADKLIM source is defined by
+    atlas/contracts/data/mlcast_radklim_5_minutes.json.
+  installation_notes: A local handler cannot serve this data until a RADKLIM reader
+    runtime is added.
