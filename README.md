@@ -17,8 +17,8 @@ registered versioned catalog references for SEVIR and CMA. The shared field
 layout remains single-variable `float32(time,y,x)` with a boolean missing mask.
 V2 adds arbitrary data and variable identifiers, explicit cadence, and aggregate
 batch manifests. The retrospective context/target task is unchanged. V1 schemas,
-contracts, templates, products and runtime mapping are retained. Runtime mapping
-files named `products-v1.json` and `products-v2.json` both use
+contracts and templates are retained; each product manifest lists only its
+latest version. The runtime mapping file `runtime/products-v2.json` uses
 `nib.runtime-products.v1`; that identifier names the mapping format.
 
 The v2 registrations are declarations, not publication evidence. Runtime and

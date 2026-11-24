@@ -80,10 +80,10 @@ The generic descriptor schemas are `catalog/contracts/observation-field/v2.json`
 and `forecast-field/v2.json`. SEVIR and CMA catalog contracts specialize the
 current products; their fixed cadences and shapes are product capabilities,
 not restrictions on the generic run schema. Each of the ten runtime products
-has a v2 entry alongside v1, with hashed contracts, constraints and usage
+lists only its v2 entry, with hashed contracts, constraints and usage
 references. `runtime/products-v2.json` selects those entries and adds CMA.
 Its mapping format remains `nib.runtime-products.v1`; product version and mapping
-format version are separate. `runtime/products-v1.json` remains unchanged.
+format version are separate.
 
 Register manually, without an exporter:
 
