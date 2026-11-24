@@ -61,6 +61,13 @@
       "model_id": "wadepre"
     },
     {
+      "product_id": "pysteps-lk-cma",
+      "version_id": "v2",
+      "category": "model",
+      "data_id": "cma_radar",
+      "model_id": "pysteps_lk"
+    },
+    {
       "product_id": "cref-verification",
       "version_id": "v2",
       "category": "evaluation",
