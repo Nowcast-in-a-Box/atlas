@@ -16,7 +16,7 @@
     },
     {
       "family": "yes_or_no",
-      "label": "Yes or no",
+      "label": "Binarization",
       "added_by_default": true,
       "needs_level": true,
       "needs_window": false,
