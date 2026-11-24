@@ -1,0 +1,39 @@
+{
+  "schema_version": "nib-hub-selection-v1",
+  "catalog_revision": "a3f795a9022f40cb2fdd889f8b483b19a4cc5440d395db1249601b370869c7e6",
+  "items": [
+    {
+      "product_id": "sevir-vil",
+      "version_id": "v2",
+      "configuration_schema_ref": {
+        "kind": "configuration_schema",
+        "ref_id": "sevir-vil-configuration",
+        "revision": "v1",
+        "sha256": "008643780bec60d0052dd60be8028f860201ba62f881ed9ea065fb57d14f04e5",
+        "path": "catalog/configuration/sevir-vil-configuration/v1.json"
+      }
+    },
+    {
+      "product_id": "nowcastnet-sevir",
+      "version_id": "v2",
+      "configuration_schema_ref": {
+        "kind": "configuration_schema",
+        "ref_id": "nowcastnet-sevir-configuration",
+        "revision": "v1",
+        "sha256": "001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6",
+        "path": "catalog/configuration/nowcastnet-sevir-configuration/v1.json"
+      }
+    },
+    {
+      "product_id": "exprecast-sevir",
+      "version_id": "v2",
+      "configuration_schema_ref": {
+        "kind": "configuration_schema",
+        "ref_id": "exprecast-sevir-configuration",
+        "revision": "v1",
+        "sha256": "001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6",
+        "path": "catalog/configuration/exprecast-sevir-configuration/v1.json"
+      }
+    }
+  ]
+}

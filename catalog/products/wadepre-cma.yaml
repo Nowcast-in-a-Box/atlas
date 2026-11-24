@@ -1,0 +1,93 @@
+product_id: wadepre-cma
+name: WADEPre · CMA demo
+description: 'WADEPre cross-domain demo using SEVIR pretrained weights on CREF.
+  Forecast skill is unvalidated.'
+category: model
+provider: Nowcast-in-a-Box
+maintainer: Nowcast-in-a-Box
+maturity: candidate
+documentation: []
+versions:
+- product_id: wadepre-cma
+  version_id: v2
+  runtime_model_id: wadepre
+  upstream_version: runtime-integration
+  version_evidence_status: declared
+  version_evidence_ref: null
+  delivery_references: []
+  metadata:
+    region: July 2026 CMA national CREF; regional center selected locally
+    purpose: WADEPre · CMA demo
+    input_window: 6 context frames; models consume latest 5
+    forecast_horizon: 20 frames / 120 minutes
+    temporal_resolution: 6 minutes
+    spatial_resolution: 3000 m regional LAEA, 128x128, 384 km extent
+    naming_conventions:
+    - nib.run.v1
+    storage_gib: null
+    license_id: null
+    license_evidence_status: unverified
+    resources:
+      gpu_count: 0
+    runtime: {}
+  inputs:
+  - name: observations
+    requirement: required
+    contract_ref:
+      kind: contract
+      ref_id: cma-observations
+      revision: v2
+      sha256: 9a6c95d1b7e09c925fee365cbc2d858c37c7f885fa3126b724f636c6d695fb17
+      path: catalog/contracts/cma-observations/v2.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    - kind: constraint
+      ref_id: wadepre-cma-input
+      revision: v2
+      sha256: 3491e412915a38e5ff72220568b88b4eaa3d1e0fdbb0b63a1ffacbc692c29acd
+      path: catalog/constraints/wadepre-cma/v2-input.json
+  outputs:
+  - name: forecast
+    contract_ref:
+      kind: contract
+      ref_id: cma-forecasts
+      revision: v2
+      sha256: 701ce20365ca909d8c7d4c9ae03c80d762c5a3d587479b0d006f3f3665fd1bc4
+      path: catalog/contracts/cma-forecasts/v2.json
+    constraint_refs:
+    - kind: constraint
+      ref_id: stored-field-pairing
+      revision: v2
+      sha256: aa13a88faf7a5b14640019c4803647178bd59eb6e276a15e997b27b069ba103b
+      path: catalog/constraints/stored-field-pairing/v2.json
+    - kind: constraint
+      ref_id: wadepre-cma-output
+      revision: v2
+      sha256: 71f8fc0ae7a643a3b6b155e416453f6588d6818c674e5f98f1195fcb5d7b9708
+      path: catalog/constraints/wadepre-cma/v2-output.json
+  configuration_schema_ref:
+    kind: configuration_schema
+    ref_id: wadepre-cma-configuration
+    revision: v1
+    sha256: 001d6d1e10c445dea274b2062ef2403f53273c2142b9f8fc608024601ad3b3a6
+    path: catalog/configuration/wadepre-cma-configuration/v1.json
+  template_refs:
+  - kind: template
+    ref_id: wadepre-cma-usage
+    revision: v2
+    sha256: 571eebbf22a89b13f51a76a444c4d7f69e3f8567637789e6dcd750f6854f6c81
+    path: catalog/templates/wadepre-cma-usage/v2.md
+  dependencies: []
+  conflicts: []
+  configuration_notes: 'Cross-domain demo: SEVIR WADEPre weights on CREF; dBZ is
+    clipped to 0..75 and normalized, and 5-minute outputs are resampled to 6-minute
+    leads. Forecast skill is unvalidated.'
+  artifact_notes: Runtime source adapters/cma_radar/wadepre; local weight SHA256
+    55c396165f620934b1262eeac19997f14b00fae5f3a150015a5a84c9cbd6ee3b. No OCI digest
+    declared.
+  installation_notes: Prepare the local embedded WADEPre image and copy the checked
+    SEVIR WADEPre weight; CMA comparison requires no basemap cache.

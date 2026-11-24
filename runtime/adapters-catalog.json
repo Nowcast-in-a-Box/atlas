@@ -192,6 +192,230 @@
           }
         }
       ]
+    },
+    {
+      "id": "mlcast_radklim_hourly",
+      "version": "1.0.0",
+      "path": "mlcast_radklim_hourly",
+      "title": "Germany DWD RADKLIM hourly",
+      "instrument": "radar composite",
+      "requirements": "mlcast_radklim_hourly/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "rainfall_amount",
+            "long_name": "radar-derived_hourly_precipitation_amount",
+            "units": "mm"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 60,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
+    },
+    {
+      "id": "mlcast_radklim_5_minutes",
+      "version": "1.0.0",
+      "path": "mlcast_radklim_5_minutes",
+      "title": "Germany DWD RADKLIM 5 min",
+      "instrument": "radar composite",
+      "requirements": "mlcast_radklim_5_minutes/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "rainfall_amount",
+            "long_name": "radar-derived_5min_precipitation_amount",
+            "units": "mm"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 5,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
+    },
+    {
+      "id": "mlcast_dmi_10_minutes",
+      "version": "1.0.0",
+      "path": "mlcast_dmi_10_minutes",
+      "title": "Denmark DMI radar reflectivity",
+      "instrument": "radar composite",
+      "requirements": "mlcast_dmi_10_minutes/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "dbz",
+            "long_name": "radar_reflectivity",
+            "units": "dBZ"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 10,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
+    },
+    {
+      "id": "mlcast_it_dpc_sri_5min",
+      "version": "1.0.0",
+      "path": "mlcast_it_dpc_sri_5min",
+      "title": "Italy DPC surface rainfall intensity",
+      "instrument": "radar composite",
+      "requirements": "mlcast_it_dpc_sri_5min/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "RR",
+            "long_name": "surface_rainfall_intensity",
+            "units": "mm/h"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 5,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
+    },
+    {
+      "id": "mlcast_uk_metoffice_5min",
+      "version": "1.0.0",
+      "path": "mlcast_uk_metoffice_5min",
+      "title": "UK Met Office radar precipitation",
+      "instrument": "radar composite",
+      "requirements": "mlcast_uk_metoffice_5min/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "RR",
+            "long_name": "rainfall_rate",
+            "units": "mm/h"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 5,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
+    },
+    {
+      "id": "mlcast_be_rmi_radclim_mfb_5min",
+      "version": "1.0.0",
+      "path": "mlcast_be_rmi_radclim_mfb_5min",
+      "title": "Belgium RMI RADCLIM MFB",
+      "instrument": "radar composite",
+      "requirements": "mlcast_be_rmi_radclim_mfb_5min/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "rain_rate",
+            "long_name": "bias_corrected_rainfall_rate",
+            "units": "mm/h"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 5,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
+    },
+    {
+      "id": "mlcast_fr_mf_prate_5min",
+      "version": "1.0.0",
+      "path": "mlcast_fr_mf_prate_5min",
+      "title": "France Meteo-France radar precipitation",
+      "instrument": "radar composite",
+      "requirements": "mlcast_fr_mf_prate_5min/requirements.txt",
+      "channels": {
+        "mode": "closed",
+        "variables": [
+          {
+            "id": "prate",
+            "long_name": "rainfall_rate",
+            "units": "mm/h"
+          }
+        ]
+      },
+      "spatial": {
+        "crop": true,
+        "bbox_order": [
+          "west",
+          "south",
+          "east",
+          "north"
+        ]
+      },
+      "native_cadence_minutes": 5,
+      "formats": [
+        "zarr"
+      ],
+      "models": []
     }
   ]
 }

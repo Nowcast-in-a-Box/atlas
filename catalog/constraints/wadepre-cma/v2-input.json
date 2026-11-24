@@ -1,0 +1,32 @@
+{
+  "conformance_evidence_status": "unverified",
+  "data_id": "cma_radar",
+  "model_id": "wadepre",
+  "dimensions": [
+    "time",
+    "y",
+    "x"
+  ],
+  "mask": {
+    "dtype": "bool",
+    "true_means": "missing"
+  },
+  "variable_id": "CREF",
+  "units": "dBZ",
+  "context_frames": 5,
+  "cadence_minutes": 6,
+  "spatial": [
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "allow_missing": false,
+  "declaration_ref": {
+    "kind": "contract",
+    "ref_id": "wadepre-cma-model",
+    "revision": "0.1.0",
+    "path": "contracts/models/cma_radar/wadepre.json",
+    "sha256": "020e126e912235851efeb5a2ba2a79e0f6570dfe3561e58dd07b72f9f17c9740"
+  },
+  "context_selection": "latest"
+}
